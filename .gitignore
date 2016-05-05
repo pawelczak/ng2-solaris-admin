@@ -1,0 +1,20 @@
+.*
+!.gitignore
+!.gitkeep
+!.bowerrc
+npm-debug.log
+debug.log
+/libs/
+/dist/
+/node_modules/
+/coverage/
+
+/src/app/*.js
+/src/app/**/*.js
+/src/app/*.js.map
+/src/app/**/*.js.map
+
+# Typing #
+/src/typings/tsd/
+/typings/
+/tsd_typings/
