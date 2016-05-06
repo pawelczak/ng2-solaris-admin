@@ -1,8 +1,8 @@
 {
-  "name": "saos-ang2",
-  "version": "1.0.0",
-  "title": "SAOS - Judgment analysis app",
-  "description": "Application for searching and analyzing court judgments",
+  "name": "ng2-solaris-admin",
+  "version": "0.0.1",
+  "title": "Solaris admin",
+  "description": "Solaris admin application",
   "author": "Łukasz Pawełczak (http://github.com/pawelczak)",
   "scripts": {
     "typings": "typings",
