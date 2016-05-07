@@ -4,6 +4,7 @@ import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from "angular2/router";
 
 @Component({
     selector: 'admin',
+    styles: [require('../../../libs/metisMenu/dist/metisMenu.min.css')],
     template: require('./admin.component.html'),
     directives: [
         ROUTER_DIRECTIVES,
