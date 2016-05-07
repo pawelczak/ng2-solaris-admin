@@ -9,13 +9,13 @@
     "postinstall": "npm run typings -- install",
     "build": "webpack",
     "start": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --history-api-fallback --port 3000",
-    "unit-tests": "karma start",
+    "unit-test": "karma start",
 
-    "pree2e-tests": "npm run webdriver:update -- --standalone",
-    "e2e-tests": "protractor",
+    "pree2e-test": "npm run webdriver:update -- --standalone",
+    "e2e-test": "protractor",
 
-    "pretests": "npm run unit-tests",
-    "tests": "npm run e2e-tests",
+    "pretest": "npm run unit-tests",
+    "test": "npm run e2e-tests",
 
     "webdriver-manager": "webdriver-manager",
     "webdriver:update": "npm run webdriver-manager update",

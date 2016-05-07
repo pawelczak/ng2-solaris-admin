@@ -1,0 +1,49 @@
+<div id="wrapper">
+
+    <!-- LOGO -->
+    <nav style="margin-bottom: 0" role="navigation" class="navbar navbar-default navbar-static-top">
+        <div class="navbar-header">
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">Solaris Admin Panel</a>
+        </div>
+
+        <!-- SIDE MENU -->
+        <div role="navigation" class="navbar-default sidebar">
+            <div class="sidebar-nav navbar-collapse">
+                <ul id="side-menu" class="nav">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" placeholder="Search..." class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                        </div>
+                    </li>
+                    <li [routerLink]="['Dashboard']" >
+                        <a href=""><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                    </li>
+                    <li [routerLink]="['Gallery']" >
+                        <a href=""><i class="fa fa-dashboard fa-fw"></i>Gallery</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div id="page-wrapper" style="min-height: 328px;">
+
+        <router-outlet></router-outlet>
+
+    </div>
+
+</div>
+

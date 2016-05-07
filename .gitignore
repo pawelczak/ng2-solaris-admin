@@ -4,6 +4,7 @@
 !.bowerrc
 npm-debug.log
 debug.log
+*.iml
 /libs/
 /dist/
 /node_modules/
