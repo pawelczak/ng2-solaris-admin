@@ -13,6 +13,8 @@ import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from "angular2/router";
 @RouteConfig([
     {path: '/', name: 'Dashboard', component: DashboardComponent, useAsDefault: true},
     {path: '/gallery', name: 'Gallery',
-        loader: () => require('es6-promise!./gallery/gallery.component')('GalleryComponent')}
+        loader: () => require('es6-promise!./gallery/gallery.component')('GalleryComponent')},
+    {path: '/photo', name: 'Photo',
+        loader: () => require('es6-promise!./photo/photo.component')('PhotoComponent')}
 ])
 export class AdminComponent {}
