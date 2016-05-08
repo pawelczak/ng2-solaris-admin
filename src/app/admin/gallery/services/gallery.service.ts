@@ -1,22 +1,35 @@
-import {Http} from "angular2/http";
+import {DataService} from "../../../common/repositories/data.service";
 import {Injectable} from "angular2/core";
-import {Observable} from "rxjs/Observable";
-import {GalleryConverter} from "./gallery.converter";
+import {Gallery} from "../models/gallery";
+import {Http} from "angular2/http";
 
 @Injectable()
-export class GalleryService {
+export class GalleryService extends DataService<Gallery> {
+
 
     private _url: string = 'http://localhost:8080/admin/api/gallery/list';
-    
+
+
     constructor(
-        private _http: Http,
-        private _galleryConverter: GalleryConverter
-    ) {}
-    
-    getGalleries(): Observable<any[]> {
-        return this._http
-                    .get(this._url)
-                    .map((res) => { return this._galleryConverter.convertList(res.json());});
+        _http: Http
+    ) {
+        super(_http);
     }
-    
+
+
+    getGalleries(): any {
+        return this.getData(this._url);
+    }
+
+    convert(rawData: any): Gallery {
+
+        let gallery = new Gallery();
+
+        gallery.id = <number>rawData.id;
+        gallery.name = rawData.name;
+        gallery.description = rawData.description;
+        gallery.visible = rawData.visible === 'true';
+
+        return gallery;
+    }
 }

@@ -1,8 +1,12 @@
 import {Gallery} from "../models/gallery";
+import {Injectable} from "angular2/core";
+import {DataConverter} from "../../../common/converters/data.converter";
 
-export class GalleryConverter {
-    
-    convertList(rawData: any[]): Gallery[] {
+@Injectable()
+export class GalleryConverter extends DataConverter<Gallery> {
+
+    /*
+    convertArray(rawData: any[]): Gallery[] {
 
         let galleries: Gallery[] = [];
 
@@ -12,7 +16,7 @@ export class GalleryConverter {
 
         return galleries;
     }
-    
+    */
     
     convert(rawData: any): Gallery {
 
