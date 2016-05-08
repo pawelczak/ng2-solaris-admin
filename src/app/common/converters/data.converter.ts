@@ -1,20 +1,12 @@
 import {Injectable} from "angular2/core";
 
-/**
- * This class does not work
- */
+
 @Injectable()
 export class DataConverter<T> {
 
 
     convert(rawData: any): T {
-        var object: T = this.factory<T>();
-
-        for (let property in rawData) {
-            object[property] = rawData[property];
-        }
-
-        return object;
+        return <T>rawData;
     }
 
     convertArray(rawData: any[]): T[] {
@@ -27,6 +19,10 @@ export class DataConverter<T> {
         return array;
     }
 
+
+    /**
+     * This method does not work
+     */
     factory<T>(): T {
         var type: {new(): T ;};
         return new type();
