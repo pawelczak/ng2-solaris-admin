@@ -4,19 +4,6 @@ import {DataConverter} from "../../../common/converters/data.converter";
 
 @Injectable()
 export class GalleryConverter extends DataConverter<Gallery> {
-
-    /*
-    convertArray(rawData: any[]): Gallery[] {
-
-        let galleries: Gallery[] = [];
-
-        for (let i = 0, length = rawData.length; i < length; i += 1) {
-            galleries.push(this.convert(rawData[i]));
-        }
-
-        return galleries;
-    }
-    */
     
     convert(rawData: any): Gallery {
 

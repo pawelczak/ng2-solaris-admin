@@ -12,11 +12,36 @@
             </div>
             <div class="panel-body">
 
-                <div class="row"></div>
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <page-size (selectedPageSize)="setPageSize($event)" ></page-size>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <input [(ngModel)]="model.searchPhrase" />
+
+                    </div>
+
+                </div>
 
                 <div class="row">
 
-                    <table>
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>visible</th>
+                            <th>description</th>
+                        </tr>
+                        <tr *ngFor="#item of items | search: model.searchPhrase" >
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.visible}}</td>
+                            <td>{{item.description}}</td>
+                        </tr>
 
                     </table>
 
@@ -28,5 +53,6 @@
         </div>
     </div>
 </div>
+
 
 
