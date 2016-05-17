@@ -11,6 +11,21 @@
             </button>
             <a href="index.html" class="navbar-brand">Solaris Admin Panel</a>
         </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown" >
+
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+
+                <!-- Drop down user -->
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
         <!-- SIDE MENU -->
         <div role="navigation" class="navbar-default sidebar">
@@ -35,10 +50,10 @@
                         <a href=""><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                     </li>
                     <li [routerLink]="['Gallery']" >
-                        <a href=""><i class="fa fa-dashboard fa-fw"></i>Galleries</a>
+                        <a href=""><i class="fa fa-object-group fa-fw"></i>Galleries</a>
                     </li>
                     <li [routerLink]="['Photo']" >
-                        <a href=""><i class="fa fa-dashboard fa-fw"></i>Photos</a>
+                        <a href=""><i class="fa fa-picture-o fa-fw"></i>Photos</a>
                     </li>
                 </ul>
             </div>
