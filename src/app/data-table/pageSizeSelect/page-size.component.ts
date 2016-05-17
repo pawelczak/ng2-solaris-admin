@@ -2,6 +2,14 @@ import {Component, Input, Output, EventEmitter} from "angular2/core";
 
 @Component({
     selector: 'page-size',
+    styles: [`
+
+        label {
+            font-weight: normal;
+            text-align: left;
+            white-space: nowrap;
+        }
+    `],
     template: `
         <label>
             Show
