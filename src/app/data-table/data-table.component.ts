@@ -1,19 +1,21 @@
 import {Component, Input, OnInit} from "angular2/core";
 import {PageSizeComponent} from "./pageSizeSelect/page-size.component";
-import {SearchPipe} from "./search/search.pipe";
+import {ResultsInfoDirective} from "./results-info/results-info.directive";
 
 @Component({
     selector: 'data-table',
     template: require('./data-table.component.html'),
     directives: [
-        PageSizeComponent
-    ],
-    pipes: [SearchPipe]
+        PageSizeComponent,
+        ResultsInfoDirective
+    ]
 })
 export class DataTableComponent implements OnInit {
 
     @Input()
-    items: any;
+    items: any[];
+
+    pageNumber: number = 1;
 
     pageSize: number = 5;
     

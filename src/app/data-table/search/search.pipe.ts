@@ -13,12 +13,9 @@ export class SearchPipe implements PipeTransform {
 
         return value.filter((item) => {
 
-            return item[field].indexOf(phrases) !== -1;
-
-
+            //return item[field].indexOf(phrases) !== -1;
 
             for(let key in item) {
-
 
                 if ((typeof item[key] === 'string' || item[key] instanceof String)
                 && item[key].indexOf(phrases) !== -1) {

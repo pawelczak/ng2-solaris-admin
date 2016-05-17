@@ -3,14 +3,18 @@ import {Component, Input, Output, EventEmitter} from "angular2/core";
 @Component({
     selector: 'page-size',
     template: `
-        <select class="form-control"
-                [(ngModel)]="model.pageSize" 
-                (change)="change($event, pageSize.value)"
-                #pageSize >
-            <option *ngFor="#p of pageSizes"
-                    [value]="p"
-                    >{{p}}</option>
-        </select>
+        <label>
+            Show
+            <select class="form-control input-sm"
+                    [(ngModel)]="model.pageSize" 
+                    (change)="change($event, pageSize.value)"
+                    #pageSize >
+                <option *ngFor="#p of pageSizes"
+                        [value]="p"
+                        >{{p}}</option>
+            </select>
+            entries
+        </label>
 
     `
 })
