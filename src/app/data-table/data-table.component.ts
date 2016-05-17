@@ -1,13 +1,24 @@
 import {Component, Input, OnInit} from "angular2/core";
 import {PageSizeComponent} from "./pageSizeSelect/page-size.component";
 import {ResultsInfoDirective} from "./results-info/results-info.directive";
+import {PaginationDirective} from "./pagination/pagination.directive";
 
 @Component({
     selector: 'data-table',
+    styles: [`
+        .pagination-col {
+            text-align: right;
+        }
+        
+        table {
+            margin-bottom: 6px;
+        }
+    `],
     template: require('./data-table.component.html'),
     directives: [
         PageSizeComponent,
-        ResultsInfoDirective
+        ResultsInfoDirective,
+        PaginationDirective
     ]
 })
 export class DataTableComponent implements OnInit {
