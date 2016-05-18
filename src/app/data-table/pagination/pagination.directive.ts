@@ -32,8 +32,12 @@ export class PaginationDirective {
     getTotalPageNumber(resultsNumber: number, pageSize: number): number {
         return Math.ceil(resultsNumber / pageSize);
     }
+
+    previousButtonClass(): string {
+        return this.pageNumber === 1 ? "disabled" : "";
+    }
     
     nextButtonClass(): string {
-        return this.pageNumber < Math.ceil(this.resultsNumber / this.pageSize) ? "disabled" : "";
+        return this.pageNumber >= Math.ceil(this.resultsNumber / this.pageSize) ? "disabled" : "";
     }
 }

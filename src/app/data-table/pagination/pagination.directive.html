@@ -1,7 +1,6 @@
 <ul class="pagination">
-    <li>
+    <li [ngClass]="previousButtonClass()">
         <a (click)="changePage(-1)"
-           *ngIf="pageNumber !== 1"
            aria-label="Previous"
         >
             <span aria-hidden="true">Previous</span>

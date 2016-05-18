@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from "angular2/core";
+import {Component, Input, Output, EventEmitter, OnChanges} from "angular2/core";
 
 @Component({
     selector: 'page-size',
@@ -15,8 +15,8 @@ import {Component, Input, Output, EventEmitter} from "angular2/core";
             Show
             <select class="form-control input-sm"
                     [(ngModel)]="model.pageSize" 
-                    (change)="change($event, pageSize.value)"
-                    #pageSize >
+                    (change)="change($event, ps.value)"
+                    #ps >
                 <option *ngFor="#p of pageSizes"
                         [value]="p"
                         >{{p}}</option>
@@ -26,24 +26,30 @@ import {Component, Input, Output, EventEmitter} from "angular2/core";
 
     `
 })
-export class PageSizeComponent {
+export class PageSizeComponent implements OnChanges {
 
     @Input()
-    sizes: any;
+    pageSize: number = 5;
 
     @Output()
     selectedPageSize = new EventEmitter<boolean>();
 
     model: any = {
-        pageSize: 1
+        pageSize: 5
     };
 
-    //selectedPageSize: number = this._defaultPageSizes[0];
+    private _defaultPageSizes: number[] = [5, 10, 15, 20];
 
-    private _defaultPageSizes: number[] = [1, 5, 10, 15, 20];
+    constructor() {
+        this.model.pageSize = this.pageSize;
+    }
 
     get pageSizes(): number[] {
         return this._defaultPageSizes;
+    }
+
+    ngOnChanges() {
+        this.model.pageSize = this.pageSize;
     }
 
     change($event, value) {

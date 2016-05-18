@@ -64,6 +64,9 @@ export class GalleryService extends DataService<Gallery> {
             galleryThree,
             galleryOne,
             galleryTwo,
+            galleryThree,
+            galleryOne,
+            galleryTwo,
             galleryThree
         ];
     }

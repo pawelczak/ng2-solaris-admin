@@ -37,11 +37,12 @@ export class DataTableComponent implements OnInit {
     };
 
     ngOnInit(): void {
-        this.setPageSize(5);
+        this.setPageSize(10);
     }
 
     setPageSize(size: number): void {
         this.pageSize = size;
+        this.pageNumber = 1;
     }
 
     setPageNumber(page: number): void {
