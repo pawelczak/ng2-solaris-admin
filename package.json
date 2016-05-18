@@ -6,7 +6,7 @@
   "author": "Łukasz Pawełczak (http://github.com/pawelczak)",
   "scripts": {
     "typings": "typings",
-    "postinstall": "npm run typings -- install",
+    "postinstall": "npm run typings -- install && npm run bower",
     "build": "webpack",
     "start": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --history-api-fallback --port 3000",
     "unit-test": "karma start",

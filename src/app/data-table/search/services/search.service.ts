@@ -6,7 +6,8 @@ export class SearchService<T> {
     
     
     search(obj: T, phrase: string): boolean {
-        return obj.getContent().indexOf(phrase) !== -1;
+        return false;
+        //return obj.getContent().indexOf(phrase) !== -1;
     }
     
 }

@@ -43,4 +43,8 @@ export class DataTableComponent implements OnInit {
     setPageSize(size: number): void {
         this.pageSize = size;
     }
+
+    setPageNumber(page: number): void {
+        this.pageNumber = page;
+    }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, Output} from "angular2/core";
+import {Component, Input, Output, EventEmitter} from "angular2/core";
 
 @Component({
     selector: 'pagination',
@@ -21,11 +21,19 @@ export class PaginationDirective {
     @Input()
     resultsNumber: number;
 
-    //@Output()
-    //selectedPageNumber: number;
+    @Output()
+    selectedPageNumber = new EventEmitter<number>();
 
 
-    changePage(page: number) {
-        
+    changePage(page: number): void {
+        this.selectedPageNumber.emit(this.pageNumber + page);
+    }
+
+    getTotalPageNumber(resultsNumber: number, pageSize: number): number {
+        return Math.ceil(resultsNumber / pageSize);
+    }
+    
+    nextButtonClass(): string {
+        return this.pageNumber < Math.ceil(this.resultsNumber / this.pageSize) ? "disabled" : "";
     }
 }

@@ -27,11 +27,14 @@ export class GalleryComponent implements OnInit {
     }
 
     getGalleries(): void {
+        this.galleries = this._galleryService.getGalleries();
+        /*
         this._galleryService
             .getGalleries()
             .subscribe((data) => {
                this.galleries = data;
             });
+            */
     }
 
 }

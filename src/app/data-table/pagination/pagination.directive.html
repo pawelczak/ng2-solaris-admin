@@ -1,7 +1,7 @@
 <ul class="pagination">
     <li>
-        <a
-           *ngIf="pageNumber !== 0"
+        <a (click)="changePage(-1)"
+           *ngIf="pageNumber !== 1"
            aria-label="Previous"
         >
             <span aria-hidden="true">Previous</span>
@@ -9,20 +9,19 @@
     </li>
 
 
-    <li *ngIf="pageNumber > 2" ><a (click)="changePage(-3)" >{{pageNumber - 2}}</a></li>
-    <li *ngIf="pageNumber > 1" ><a (click)="changePage(-2)" >{{pageNumber - 1}}</a></li>
-    <li *ngIf="pageNumber > 0" ><a (click)="changePage(-1)" >{{pageNumber}}</a></li>
+    <li *ngIf="pageNumber > 3" ><a (click)="changePage(-3)" >{{pageNumber - 3}}</a></li>
+    <li *ngIf="pageNumber > 2" ><a (click)="changePage(-2)" >{{pageNumber - 2}}</a></li>
+    <li *ngIf="pageNumber > 1" ><a (click)="changePage(-1)" >{{pageNumber - 1}}</a></li>
 
-    <li class="active" ><a (click)="changePage(0)" >{{pageNumber + 1}}</a></li>
+    <li class="active" ><a (click)="changePage(0)" >{{pageNumber}}</a></li>
 
-    <li *ngIf="pageNumber + 2 < totalPageNumber" ><a (click)="changePage(1)" >{{pageNumber + 2}}</a></li>
-    <li *ngIf="pageNumber + 3 < totalPageNumber" ><a (click)="changePage(2)" >{{pageNumber + 3}}</a></li>
-    <li *ngIf="pageNumber + 4 < totalPageNumber" ><a (click)="changePage(3)" >{{pageNumber + 4}}</a></li>
+    <li *ngIf="pageNumber  < getTotalPageNumber(resultsNumber, pageSize)" ><a (click)="changePage(1)" >{{pageNumber + 1}}</a></li>
+    <li *ngIf="pageNumber + 1 < getTotalPageNumber(resultsNumber, pageSize)" ><a (click)="changePage(2)" >{{pageNumber + 2}}</a></li>
+    <li *ngIf="pageNumber + 2 < getTotalPageNumber(resultsNumber, pageSize)" ><a (click)="changePage(3)" >{{pageNumber + 3}}</a></li>
 
-    <li>
-        <a
-           *ngIf="pageNumber < resultsNumber - 1"
-           aria-label="Next">
+    <li [ngClass]="nextButtonClass()">
+        <a (click)="changePage(1)"
+            aria-label="Next">
             <span aria-hidden="true">Next</span>
         </a>
     </li>
