@@ -17,7 +17,7 @@ import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
                     [(ngModel)]="model.pageSize" 
                     (change)="change($event, ps.value)"
                     #ps >
-                <option *ngFor="#p of pageSizes"
+                <option *ngFor="let p of pageSizes"
                         [value]="p"
                         >{{p}}</option>
             </select>
@@ -29,7 +29,7 @@ import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 export class PageSizeComponent implements OnChanges {
 
     @Input()
-    pageSize: number = 5;
+    pageSize: number = 10;
 
     @Output()
     selectedPageSize = new EventEmitter<boolean>();

@@ -5,7 +5,7 @@
         <th>visible</th>
         <th>description</th>
     </tr>
-    <tr *ngFor="#item of items | {itemsPerPage: pageSize, currentPage: pageNumber}" >
+    <tr *ngFor="let item of items | paginate: { itemsPerPage: pageSize, currentPage: pageNumber }" >
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>

@@ -19,6 +19,4 @@ export class ItemsTable {
     pageNumber: number;
 
 
-
-
 }
