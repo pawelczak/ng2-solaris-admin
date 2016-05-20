@@ -1,5 +1,5 @@
 import {Gallery} from "../models/gallery";
-import {Injectable} from "angular2/core";
+import {Injectable} from '@angular/core';
 import {DataConverter} from "../../../common/converters/data.converter";
 
 @Injectable()

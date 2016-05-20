@@ -16,34 +16,19 @@
 
                     <div class="col-sm-6 form-inline">
 
-                        <page-size (selectedPageSize)="setPageSize($event)" ></page-size>
+                        <page-size [pageSize]="pageSize" (selectedPageSize)="setPageSize($event)" ></page-size>
 
                     </div>
 
                     <div class="col-sm-6">
-                        <!--
-                        <input [(ngModel)]="model.searchPhrase" />
-                        -->
+
                     </div>
 
                 </div>
 
                 <div class="row">
                     <div class="col-sm-12" >
-                        <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
-                            <tr>
-                                <th>id</th>
-                                <th>name</th>
-                                <th>visible</th>
-                                <th>description</th>
-                            </tr>
-                            <tr *ngFor="#item of items" >
-                                <td>{{item.id}}</td>
-                                <td>{{item.name}}</td>
-                                <td>{{item.visible}}</td>
-                                <td>{{item.description}}</td>
-                            </tr>
-                        </table>
+                        <items-table [pageNumber]="pageNumber" [pageSize]="pageSize" [items]="items" ></items-table>
                     </div>
                 </div>
 

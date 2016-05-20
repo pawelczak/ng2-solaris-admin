@@ -1,7 +1,9 @@
-import {Component, Input, OnInit} from "angular2/core";
-import {PageSizeComponent} from "./pageSizeSelect/page-size.component";
+import {Component, Input, OnInit} from '@angular/core';
+import {PageSizeComponent} from "./page-size/page-size.component";
 import {ResultsInfoDirective} from "./results-info/results-info.directive";
 import {PaginationDirective} from "./pagination/pagination.directive";
+import {VisibleIconDirective} from "./utils/visible-icon.directive";
+import {ItemsTable} from "./items-table/items-table.component";
 
 @Component({
     selector: 'data-table',
@@ -18,7 +20,9 @@ import {PaginationDirective} from "./pagination/pagination.directive";
     directives: [
         PageSizeComponent,
         ResultsInfoDirective,
-        PaginationDirective
+        PaginationDirective,
+        VisibleIconDirective,
+        ItemsTable
     ]
 })
 export class DataTableComponent implements OnInit {
@@ -28,7 +32,7 @@ export class DataTableComponent implements OnInit {
 
     pageNumber: number = 1;
 
-    pageSize: number = 5;
+    pageSize: number = 1;
     
     searchPhrase: string = '';
 

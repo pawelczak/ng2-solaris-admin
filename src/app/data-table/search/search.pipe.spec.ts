@@ -1,4 +1,4 @@
-import {describe, expect, it, xit, inject, beforeEachProviders, beforeEach} from 'angular2/testing';
+import {describe, expect, it, xit, inject, beforeEachProviders, beforeEach} from '@angular/core/testing';
 import {SearchPipe} from "./search.pipe";
 
 describe('SearchPipe', () => {

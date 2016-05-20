@@ -1,6 +1,6 @@
-import {Component} from "angular2/core";
+import {Component} from '@angular/core';
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from "angular2/router";
+import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 @Component({
     selector: 'admin',
