@@ -7,7 +7,7 @@ import {PaginatePipe, PaginationService} from 'ng2-pagination';
     pipes: [PaginatePipe],
     providers: [PaginationService]
 })
-export class ItemsTable {
+export class ItemsTableComponent {
 
     @Input()
     items: any[];

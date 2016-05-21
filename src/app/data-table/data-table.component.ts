@@ -3,7 +3,7 @@ import {PageSizeComponent} from "./page-size/page-size.component";
 import {ResultsInfoDirective} from "./results-info/results-info.directive";
 import {PaginationDirective} from "./pagination/pagination.directive";
 import {VisibleIconDirective} from "./utils/visible-icon.directive";
-import {ItemsTable} from "./items-table/items-table.component";
+import {ItemsTableComponent} from "./items-table/items-table.component";
 
 @Component({
     selector: 'data-table',
@@ -22,7 +22,7 @@ import {ItemsTable} from "./items-table/items-table.component";
         ResultsInfoDirective,
         PaginationDirective,
         VisibleIconDirective,
-        ItemsTable
+        ItemsTableComponent
     ]
 })
 export class DataTableComponent implements OnInit {
