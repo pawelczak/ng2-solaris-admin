@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PageSizeComponent} from "./page-size/page-size.component";
 import {ResultsInfoDirective} from "./results-info/results-info.directive";
 import {PaginationDirective} from "./pagination/pagination.directive";
-import {VisibleIconDirective} from "./utils/visible-icon.directive";
 import {ItemsTableComponent} from "./items-table/items-table.component";
+import {VisibleIconDirective} from "../utils/visible-icon.directive";
 
 @Component({
     selector: 'data-table',
