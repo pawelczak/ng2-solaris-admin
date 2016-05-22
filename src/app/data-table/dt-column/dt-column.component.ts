@@ -9,4 +9,6 @@ export class DtColumnComponent {
     @Input()
     value: string;
 
+    @Input()
+    label: string;
 }
