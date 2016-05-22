@@ -1,53 +1,40 @@
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Galleries</h1>
+<div *ngIf="items.length !== 0" class="panel panel-default" >
+    <div class="panel-heading">
+        Galleries table
     </div>
-</div>
+    <div class="panel-body">
 
-<div class="row">
-    <div class="col-lg-12">
-        <div *ngIf="items.length !== 0" class="panel panel-default" >
-            <div class="panel-heading">
-                Galleries table
+        <div class="row">
+
+            <div class="col-sm-6 form-inline">
+
+                <page-size [pageSize]="pageSize" (selectedPageSize)="setPageSize($event)" ></page-size>
+
             </div>
-            <div class="panel-body">
 
-                <div class="row">
+            <div class="col-sm-6">
 
-                    <div class="col-sm-6 form-inline">
+            </div>
 
-                        <page-size [pageSize]="pageSize" (selectedPageSize)="setPageSize($event)" ></page-size>
+        </div>
 
-                    </div>
-
-                    <div class="col-sm-6">
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12" >
-                        <items-table [pageNumber]="pageNumber" [pageSize]="pageSize" [items]="items" ></items-table>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-2" >
-
-                        <results-info [pageNumber]="pageNumber" [pageSize]="pageSize" [resultsNumber]="items.length"></results-info>
-
-                    </div>
-                    <div class="col-sm-10 pagination-col" >
-                        <pagination [pageSize]="pageSize" [pageNumber]="pageNumber" [resultsNumber]="items.length"
-                        (selectedPageNumber)="setPageNumber($event)" ></pagination>
-                    </div>
-                </div>
-
+        <div class="row">
+            <div class="col-sm-12" >
+                <items-table [pageNumber]="pageNumber" [pageSize]="pageSize" [items]="items" [columns]="columns" ></items-table>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-2" >
+
+                <results-info [pageNumber]="pageNumber" [pageSize]="pageSize" [resultsNumber]="items.length"></results-info>
+
+            </div>
+            <div class="col-sm-10 pagination-col" >
+                <pagination [pageSize]="pageSize" [pageNumber]="pageNumber" [resultsNumber]="items.length"
+                (selectedPageNumber)="setPageNumber($event)" ></pagination>
+            </div>
+        </div>
+
     </div>
 </div>
-
-
-

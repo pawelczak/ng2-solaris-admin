@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Query, QueryList} from '@angular/core';
 import {PageSizeComponent} from "./page-size/page-size.component";
 import {ResultsInfoDirective} from "./results-info/results-info.directive";
 import {PaginationDirective} from "./pagination/pagination.directive";
 import {ItemsTableComponent} from "./items-table/items-table.component";
 import {VisibleIconDirective} from "../utils/visible-icon.directive";
+import {DtColumnComponent} from "./dt-column/dt-column.component";
 
 @Component({
     selector: 'data-table',
@@ -22,7 +23,8 @@ import {VisibleIconDirective} from "../utils/visible-icon.directive";
         ResultsInfoDirective,
         PaginationDirective,
         VisibleIconDirective,
-        ItemsTableComponent
+        ItemsTableComponent,
+        DtColumnComponent
     ]
 })
 export class DataTableComponent implements OnInit {
@@ -39,6 +41,18 @@ export class DataTableComponent implements OnInit {
     model: any = {
         searchPhrase: ''
     };
+
+    private cols: QueryList<DtColumnComponent>;
+    public columns: DtColumnComponent[] = [];
+
+    constructor(
+        @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>
+    ) {
+        this.cols = cols;
+        this.cols.changes.subscribe(() => {
+            this.columns = cols.toArray();
+        });
+    }
 
     ngOnInit(): void {
         this.setPageSize(10);

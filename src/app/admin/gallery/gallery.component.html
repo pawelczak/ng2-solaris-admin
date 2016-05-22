@@ -1,1 +1,18 @@
-<data-table [items]="galleries" ></data-table>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Galleries</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <data-table [items]="galleries" >
+            <dt-column [value]="'id'" label="id" ></dt-column>
+            <dt-column [value]="'name'" label="name" ></dt-column>
+            <dt-column [value]="'visible'" label="visible" ></dt-column>
+            <dt-column [value]="'description'" label="description" ></dt-column>
+        </data-table>
+
+    </div>
+</div>

@@ -3,6 +3,7 @@ import {GalleryService} from "./services/gallery.service";
 import {GalleryConverter} from "./services/gallery.converter";
 import {DataTableComponent} from "../../data-table/data-table.component";
 import {Gallery} from "./models/gallery";
+import {DtColumnComponent} from "../../data-table/dt-column/dt-column.component";
 
 @Component({
     template: require('./gallery.component.html'),
@@ -11,7 +12,8 @@ import {Gallery} from "./models/gallery";
         GalleryConverter
     ],
     directives: [
-        DataTableComponent
+        DataTableComponent,
+        DtColumnComponent
     ],
 })
 export class GalleryComponent implements OnInit {
