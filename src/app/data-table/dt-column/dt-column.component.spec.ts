@@ -25,7 +25,7 @@ describe ('DtColumnComponent', () => {
         inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
             tcb.overrideProviders(DtColumnComponent, [])
                 .createAsync(DtColumnComponent)
-                .then((componentFixture: ComponentFixture) => {
+                .then((componentFixture: ComponentFixture<DtColumnComponent>) => {
 
                     // given
                     let givenValue = 'given value',
@@ -49,7 +49,7 @@ describe ('DtColumnComponent', () => {
         inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
             tcb.overrideProviders(DtColumnComponent, [])
                 .createAsync(DtColumnComponent)
-                .then((componentFixture: ComponentFixture) => {
+                .then((componentFixture: ComponentFixture<DtColumnComponent>) => {
 
                     // given
                     const fixture = componentFixture.nativeElement;
