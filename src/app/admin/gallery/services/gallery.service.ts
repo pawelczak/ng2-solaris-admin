@@ -1,26 +1,26 @@
-import {DataService} from "../../../common/repositories/data.service";
+import {DataService} from '../../../common/repositories/data.service';
 import {Injectable} from '@angular/core';
-import {Gallery} from "../models/gallery";
+import {Gallery} from '../models/gallery';
 import {Http} from '@angular/http';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class GalleryService extends DataService<Gallery> {
 
 
-    private _url: string = 'http://localhost:8080/admin/api/gallery/list';
+    private url: string = 'http://localhost:8080/admin/api/gallery/list';
 
 
     constructor(
-        _http: Http
+        http: Http
     ) {
-        super(_http);
+        super(http);
     }
 
 
     getGalleries(): any {
         return this.getMockData();
-        //return this.getData(this._url);
+        //return this.getData(this.url);
     }
 
     convert(rawData: any): Gallery {
@@ -42,19 +42,19 @@ export class GalleryService extends DataService<Gallery> {
             galleryThree = new Gallery();
 
         galleryOne.id = 1;
-        galleryOne.name = "Great name";
-        galleryOne.description = "Doloro samit it etu";
+        galleryOne.name = 'Great name';
+        galleryOne.description = 'Doloro samit it etu';
         galleryOne.visible = true;
 
         galleryTwo.id = 2;
-        galleryTwo.name = "Creative name";
-        galleryTwo.description = "Lorem ipsum";
+        galleryTwo.name = 'Creative name';
+        galleryTwo.description = 'Lorem ipsum';
         galleryTwo.visible = true;
 
 
         galleryThree.id = 3;
-        galleryThree.name = "Picture";
-        galleryThree.description = "This is desc for picture";
+        galleryThree.name = 'Picture';
+        galleryThree.description = 'This is desc for picture';
         galleryThree.visible = false;
 
 

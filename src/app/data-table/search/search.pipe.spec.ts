@@ -6,8 +6,7 @@ describe('SearchPipe', () => {
     class MockClazz {
 
         constructor(
-            name?: string,
-            desc?: string
+            public name: string
         ) {}
 
     }
@@ -21,25 +20,25 @@ describe('SearchPipe', () => {
 
     it('should transform basic array', () => {
 
-        //given
+        // given
         let givenValues = [new MockClazz('value'), new MockClazz('simple'), new MockClazz('hey alu')];
 
-        //execute
+        // execute
         let actualValues = searchPipe.transform(givenValues, ['alu', 'name']);
 
-        //assert
+        // assert
         expect(actualValues).toEqual([new MockClazz('value'), new MockClazz('hey alu')]);
     });
 
     it('should not transform array when phrase is empty string', () => {
 
-        //given
+        // given
         let givenValues = [new MockClazz('value'), new MockClazz('simple'), new MockClazz('hey alu')];
 
-        //execute
+        // execute
         let actualValues = searchPipe.transform(givenValues, ['', 'name']);
 
-        //assert
+        // assert
         expect(actualValues).toEqual(givenValues);
     });
 

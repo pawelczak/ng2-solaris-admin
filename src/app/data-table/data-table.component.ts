@@ -5,6 +5,8 @@ import {PaginationDirective} from "./pagination/pagination.directive";
 import {ItemsTableComponent} from "./items-table/items-table.component";
 import {VisibleIconDirective} from "../utils/visible-icon.directive";
 import {DtColumnComponent} from "./dt-column/dt-column.component";
+import {DtColumnConverter} from "./dt-column/dt-column.converter";
+import {DtColumnModel} from "./dt-column/dt-column.model";
 
 @Component({
     selector: 'data-table',
@@ -25,6 +27,9 @@ import {DtColumnComponent} from "./dt-column/dt-column.component";
         VisibleIconDirective,
         ItemsTableComponent,
         DtColumnComponent
+    ],
+    providers: [
+        DtColumnConverter
     ]
 })
 export class DataTableComponent implements OnInit {
@@ -35,22 +40,24 @@ export class DataTableComponent implements OnInit {
     pageNumber: number = 1;
 
     pageSize: number = 1;
-    
+
     searchPhrase: string = '';
 
     model: any = {
         searchPhrase: ''
     };
 
+    public columns: DtColumnModel[] = [];
+
     private cols: QueryList<DtColumnComponent>;
-    public columns: DtColumnComponent[] = [];
 
     constructor(
+        private dtColumnConverter: DtColumnConverter,
         @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>
     ) {
         this.cols = cols;
         this.cols.changes.subscribe(() => {
-            this.columns = cols.toArray();
+            this.columns = this.dtColumnConverter.convertArray(cols.toArray());
         });
     }
 

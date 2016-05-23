@@ -1,10 +1,10 @@
-import {Gallery} from "../models/gallery";
+import {Gallery} from '../models/gallery';
 import {Injectable} from '@angular/core';
-import {DataConverter} from "../../../common/converters/data.converter";
+import {DataConverter} from '../../../common/converters/data.converter';
 
 @Injectable()
 export class GalleryConverter extends DataConverter<Gallery> {
-    
+
     convert(rawData: any): Gallery {
 
         let gallery = new Gallery();
@@ -16,5 +16,5 @@ export class GalleryConverter extends DataConverter<Gallery> {
 
         return gallery;
     }
-    
+
 }

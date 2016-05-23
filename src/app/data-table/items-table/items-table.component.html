@@ -7,7 +7,7 @@
 
     <tr *ngFor="let item of items | paginate: { itemsPerPage: pageSize, currentPage: pageNumber }" >
         <td *ngFor="let column of columns">
-            {{item[column.value]}}
+            {{item[column.fieldName]}}
         </td>
     </tr>
 </table>

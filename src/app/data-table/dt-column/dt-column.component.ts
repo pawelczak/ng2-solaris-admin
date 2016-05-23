@@ -1,14 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'dt-column',
     template: ``
 })
 export class DtColumnComponent {
-    
-    @Input()
-    value: string;
 
     @Input()
-    label: string;
+    public value: string;
+
+    @Input()
+    public label: string;
 }

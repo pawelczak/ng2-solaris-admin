@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {PaginatePipe, PaginationService} from 'ng2-pagination';
-import {DtColumnComponent} from "../dt-column/dt-column.component";
+
+import {DtColumnModel} from '../dt-column/dt-column.model';
 
 @Component({
     selector: 'items-table',
@@ -20,6 +21,6 @@ export class ItemsTableComponent {
     pageNumber: number = 1;
 
     @Input()
-    columns: DtColumnComponent[] = [];
+    columns: DtColumnModel[] = [];
 
 }

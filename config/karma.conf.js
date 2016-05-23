@@ -2,6 +2,9 @@ var path = require('path');
 var webpackConfig = require('./webpack.config.js');
 
 module.exports = function (config) {
+
+    //var testWebpackConfig = require('./webpack.test.js');
+
     var _config = {
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -12,13 +15,15 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         // list of files / patterns to load in the browser
+        /*
         files: [
             {pattern: 'node_modules/es6-shim/es6-shim.js', included: true, watched: false},
             {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: false},
             'node_modules/traceur/bin/traceur-runtime.js',
             'node_modules/traceur/bin/traceur.js',
             {pattern: 'karma-shim.js', watched: false}
-        ],
+        ],*/
+        files: [ { pattern: './config/spec-bundle.js', watched: false } ],
 
         // list of files to exclude
         exclude: [],
@@ -26,7 +31,7 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            './karma-shim.js': ['webpack', 'sourcemap']
+            './config/spec-bundle.js': ['webpack', 'sourcemap']
         },
 
         webpack: webpackConfig,
@@ -70,8 +75,8 @@ module.exports = function (config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: [
-            'Chrome'
-            //'PhantomJS'
+            //'Chrome'
+            'PhantomJS'
         ], // you can also use Chrome
 
         // Continuous Integration mode

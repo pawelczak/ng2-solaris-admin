@@ -34,10 +34,10 @@ export class PaginationDirective {
     }
 
     previousButtonClass(): string {
-        return this.pageNumber === 1 ? "disabled" : "";
+        return this.pageNumber === 1 ? 'disabled' : '';
     }
     
     nextButtonClass(): string {
-        return this.pageNumber >= Math.ceil(this.resultsNumber / this.pageSize) ? "disabled" : "";
+        return this.pageNumber >= Math.ceil(this.resultsNumber / this.pageSize) ? 'disabled' : '';
     }
 }

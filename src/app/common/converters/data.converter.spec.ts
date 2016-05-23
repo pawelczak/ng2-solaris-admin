@@ -1,4 +1,5 @@
-import {DataConverter} from "./data.converter";
+import {describe, expect, it, xit, inject, beforeEachProviders, beforeEach} from '@angular/core/testing';
+import {DataConverter} from './data.converter';
 
 
 describe('DataConverter', () => {
