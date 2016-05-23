@@ -4,16 +4,22 @@ import {Injectable} from '@angular/core';
 export class DtConfigService {
 
 
-    private resultsInfoTemplate: string = 'Showing {{from}} to {{to}} of {{max}} entries';
+    private labels: any = {
+        resultsInfo: 'Showing {{from}} to {{to}} of {{max}} entries'
+    };
 
-    
-    getResultsInfoTemplate(): string {
-        return this.resultsInfoTemplate;
+    getResultsInfoLabel(): string {
+        return this.labels.resultsInfo;
     }
 
 
-    setResultsInfoTemplate(template: string) {
-        this.resultsInfoTemplate = template;
+    setLabels(sourceLabels: any): void {
+        // TODO use merge
+        this.labels = sourceLabels;
+    }
+
+    setResultsInfoLabel(template: string) {
+        this.labels.resultsInfo = template;
     }
 
 }

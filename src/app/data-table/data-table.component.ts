@@ -1,12 +1,14 @@
-import {Component, Input, OnInit, Query, QueryList} from '@angular/core';
-import {PageSizeComponent} from "./page-size/page-size.component";
-import {ResultsInfoDirective} from "./results-info/results-info.directive";
-import {PaginationDirective} from "./pagination/pagination.directive";
-import {ItemsTableComponent} from "./items-table/items-table.component";
-import {VisibleIconDirective} from "../utils/visible-icon.directive";
-import {DtColumnComponent} from "./dt-column/dt-column.component";
-import {DtColumnConverter} from "./dt-column/dt-column.converter";
-import {DtColumnModel} from "./dt-column/dt-column.model";
+import {Component, Input, OnInit, OnChanges, Query, QueryList} from '@angular/core';
+
+import {PageSizeComponent} from './page-size/page-size.component';
+import {ResultsInfoDirective} from './results-info/results-info.directive';
+import {PaginationDirective} from './pagination/pagination.directive';
+import {ItemsTableComponent} from './items-table/items-table.component';
+import {VisibleIconDirective} from '../utils/visible-icon.directive';
+import {DtColumnComponent} from './dt-column/dt-column.component';
+import {DtColumnConverter} from './dt-column/dt-column.converter';
+import {DtColumnModel} from './dt-column/dt-column.model';
+import {DtConfigService} from './config/dt-config.service';
 
 @Component({
     selector: 'data-table',
@@ -29,13 +31,17 @@ import {DtColumnModel} from "./dt-column/dt-column.model";
         DtColumnComponent
     ],
     providers: [
+        DtConfigService,
         DtColumnConverter
     ]
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent implements OnInit, OnChanges {
 
     @Input()
     items: any[];
+
+    @Input()
+    labels: any;
 
     pageNumber: number = 1;
 
@@ -52,6 +58,7 @@ export class DataTableComponent implements OnInit {
     private cols: QueryList<DtColumnComponent>;
 
     constructor(
+        private dtConfigService: DtConfigService,
         private dtColumnConverter: DtColumnConverter,
         @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>
     ) {
@@ -63,6 +70,12 @@ export class DataTableComponent implements OnInit {
 
     ngOnInit(): void {
         this.setPageSize(10);
+    }
+
+    ngOnChanges(): void {
+        if (this.labels !== undefined) {
+            this.dtConfigService.setLabels(this.labels);
+        }
     }
 
     setPageSize(size: number): void {

@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
 
-        <data-table [items]="galleries" >
+        <data-table [items]="galleries" [labels]="{resultsInfo: 'Foo .'}" >
             <dt-column [value]="'id'" [label]="'Id'" ></dt-column>
             <dt-column [value]="'name'" ></dt-column>
             <dt-column [value]="'visible'" [label]="'Visible'" ></dt-column>

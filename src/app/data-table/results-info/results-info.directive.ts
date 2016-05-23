@@ -35,7 +35,7 @@ export class ResultsInfoDirective {
     constructor(
         private dtConfigService: DtConfigService
     ) {
-        this.textTemplate = dtConfigService.getResultsInfoTemplate();
+        this.textTemplate = this.dtConfigService.getResultsInfoLabel();
     }
 
     createInfoText(pageNumber: number, pageSize: number, resultsNumber: number): string {
@@ -48,7 +48,7 @@ export class ResultsInfoDirective {
 
 
     private getText(from: number, to: number, max: number): string {
-        let text = this.textTemplate;
+        let text = this.dtConfigService.getResultsInfoLabel();
 
         text = text.replace(/\{\{from\}\}/g, from.toString());
         text = text.replace(/\{\{to\}\}/g, to.toString());
