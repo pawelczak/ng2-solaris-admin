@@ -21,6 +21,9 @@ export class PaginationDirective {
     @Input()
     resultsNumber: number;
 
+    @Input()
+    labels: any;
+
     @Output()
     selectedPageNumber = new EventEmitter<number>();
 
@@ -36,7 +39,7 @@ export class PaginationDirective {
     previousButtonClass(): string {
         return this.pageNumber === 1 ? 'disabled' : '';
     }
-    
+
     nextButtonClass(): string {
         return this.pageNumber >= Math.ceil(this.resultsNumber / this.pageSize) ? 'disabled' : '';
     }

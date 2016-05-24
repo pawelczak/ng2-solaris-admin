@@ -20,6 +20,13 @@ export class GalleryComponent implements OnInit {
 
     galleries: Gallery[] = [];
 
+    customLabels: any = {
+        'resultsInfo': 'Showing {{from}} to {{to}} of {{max}} entries test',
+        'pagination': {
+            'next': 'Next test',
+            'previous': 'Previous test'
+        }
+    };
 
     constructor(private _galleryService: GalleryService) {}
 

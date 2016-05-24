@@ -59,6 +59,10 @@ module.exports = {
         //name: helpers.reverse(['polyfills', 'vendor', 'main']),
         name: ['main', 'vendor', 'polyfills'],
         minChunks: Infinity
+      }),
+
+      new webpack.ProvidePlugin({
+        _: 'lodash'
       })
 
     ],

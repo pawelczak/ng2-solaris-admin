@@ -1,9 +1,9 @@
 <ul class="pagination">
     <li [ngClass]="previousButtonClass()">
         <a (click)="changePage(-1)"
-           aria-label="Previous"
+           aria-label="TODO"
         >
-            <span aria-hidden="true">Previous</span>
+            <span aria-hidden="true">{{labels.previous}}</span>
         </a>
     </li>
 
@@ -19,8 +19,8 @@
 
     <li [ngClass]="nextButtonClass()">
         <a (click)="changePage(1)"
-            aria-label="Next">
-            <span aria-hidden="true">Next</span>
+            aria-label="TODO">
+            <span aria-hidden="true">{{labels.next}}</span>
         </a>
     </li>
 </ul>

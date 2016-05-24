@@ -29,18 +29,14 @@ export class ResultsInfoDirective {
     @Input()
     resultsNumber: number = 0;
 
+    @Input()
+    labels: string;
 
     private textTemplate: string = '';
 
-    constructor(
-        private dtConfigService: DtConfigService
-    ) {
-        this.textTemplate = this.dtConfigService.getResultsInfoLabel();
-    }
 
     createInfoText(pageNumber: number, pageSize: number, resultsNumber: number): string {
-
-        let from = (pageNumber-1) * pageSize + 1,
+        let from = (pageNumber - 1) * pageSize + 1,
             to = pageNumber * pageSize < resultsNumber ? pageNumber * pageSize : resultsNumber;
 
         return this.getText(from, to, resultsNumber);
@@ -48,7 +44,7 @@ export class ResultsInfoDirective {
 
 
     private getText(from: number, to: number, max: number): string {
-        let text = this.dtConfigService.getResultsInfoLabel();
+        let text = this.labels;
 
         text = text.replace(/\{\{from\}\}/g, from.toString());
         text = text.replace(/\{\{to\}\}/g, to.toString());

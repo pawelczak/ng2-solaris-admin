@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "lodash": "github:typed-typings/npm-lodash#65781ee6b25562ee9b5913043a3ba249acfcee17",
     "zone.js": "github:gdi2290/typed-zone.js#66ea8a3451542bb7798369306840e46be1d6ec89"
   },
   "devDependencies": {},

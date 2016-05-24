@@ -9,6 +9,7 @@ import {DtColumnComponent} from './dt-column/dt-column.component';
 import {DtColumnConverter} from './dt-column/dt-column.converter';
 import {DtColumnModel} from './dt-column/dt-column.model';
 import {DtConfigService} from './config/dt-config.service';
+import {LabelsService} from './labels/labels.service';
 
 @Component({
     selector: 'data-table',
@@ -32,16 +33,20 @@ import {DtConfigService} from './config/dt-config.service';
     ],
     providers: [
         DtConfigService,
+        LabelsService,
         DtColumnConverter
     ]
 })
-export class DataTableComponent implements OnInit, OnChanges {
+export class DataTableComponent implements OnInit {
 
     @Input()
     items: any[];
 
     @Input()
-    labels: any;
+    set labels(labels: any) {
+        this.labelsService.setLabels(labels);
+        this._labels = this.labelsService.getLabels();
+    }
 
     pageNumber: number = 1;
 
@@ -53,12 +58,15 @@ export class DataTableComponent implements OnInit, OnChanges {
         searchPhrase: ''
     };
 
+    _labels: any;
+
+
     public columns: DtColumnModel[] = [];
 
     private cols: QueryList<DtColumnComponent>;
 
     constructor(
-        private dtConfigService: DtConfigService,
+        private labelsService: LabelsService,
         private dtColumnConverter: DtColumnConverter,
         @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>
     ) {
@@ -72,10 +80,8 @@ export class DataTableComponent implements OnInit, OnChanges {
         this.setPageSize(10);
     }
 
-    ngOnChanges(): void {
-        if (this.labels !== undefined) {
-            this.dtConfigService.setLabels(this.labels);
-        }
+    get labels() {
+        return this._labels;
     }
 
     setPageSize(size: number): void {
