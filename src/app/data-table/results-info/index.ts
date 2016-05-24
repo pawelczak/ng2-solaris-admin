@@ -1,1 +1,1 @@
-export * from './results-info.directive';
+export * from './results-info.component';

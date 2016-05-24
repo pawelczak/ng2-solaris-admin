@@ -9,8 +9,7 @@ import {DtColumnComponent} from './dt-column.component';
 import {DtColumnModel} from './dt-column.model';
 
 describe('DtColumnConverter', () => {
-
-
+    
     let dtColumnConverter: DtColumnConverter;
 
     beforeEach(() => {
@@ -68,8 +67,7 @@ describe('DtColumnConverter', () => {
         });
 
     });
-
-
+    
     describe('convertArray', () => {
 
         it ('should convert array of DtColumnComponent', () => {

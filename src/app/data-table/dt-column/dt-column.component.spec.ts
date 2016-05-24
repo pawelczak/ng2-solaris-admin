@@ -60,7 +60,6 @@ describe ('DtColumnComponent', () => {
                     // assert
                     expect(fixture.querySelectorAll('*').length).toBe(0);
                 });
-
         })
     );
 

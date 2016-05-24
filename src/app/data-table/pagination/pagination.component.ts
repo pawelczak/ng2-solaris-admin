@@ -2,14 +2,14 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'pagination',
-    template: require('./pagination.directive.html'),
+    template: require('./pagination.component.html'),
     styles: [`
         .pagination {
             margin: 2px 0;
         }
     `]
 })
-export class PaginationDirective {
+export class PaginationComponent {
 
 
     @Input()

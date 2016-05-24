@@ -1,5 +1,5 @@
 <div *ngIf="items.length !== 0" class="panel panel-default" >
-    <div class="panel-heading">
+    <div class="panel-heading" >
         {{labels.tableHeader}}
     </div>
     <div class="panel-body">
@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-sm-6 form-inline">
-                <page-size [pageSize]="pageSize" (selectedPageSize)="setPageSize($event)" ></page-size>
+                <page-size [pageSize]="pageSize" [labels]="labels.pageSize" (selectedPageSize)="setPageSize($event)" ></page-size>
             </div>
 
             <div class="col-sm-6">

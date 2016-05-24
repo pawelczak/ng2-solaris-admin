@@ -2,8 +2,7 @@ import {describe, expect, it, xit, inject, beforeEachProviders, beforeEach} from
 import {DtColumnModel} from './dt-column.model';
 
 describe('DtColumnModel', () => {
-
-
+    
     it('should be possible to create object', () => {
 
         // given

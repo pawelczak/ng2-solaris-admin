@@ -1,7 +1,5 @@
 import {Input, Component} from '@angular/core';
 
-import {DtConfigService} from "../config/dt-config.service";
-
 @Component({
     selector: 'results-info',
     template: `
@@ -13,12 +11,9 @@ import {DtConfigService} from "../config/dt-config.service";
         .results-info {
             padding-top: 8px;
         }
-    `],
-    providers: [
-        DtConfigService
-    ]
+    `]
 })
-export class ResultsInfoDirective {
+export class ResultsInfoComponent {
 
     @Input()
     pageNumber: number = 0;

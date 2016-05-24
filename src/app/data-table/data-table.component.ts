@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, OnChanges, Query, QueryList} from '@angular/core';
 
 import {PageSizeComponent} from './page-size/page-size.component';
-import {ResultsInfoDirective} from './results-info/results-info.directive';
-import {PaginationDirective} from './pagination/pagination.directive';
+import {ResultsInfoComponent} from './results-info/results-info.component';
+import {PaginationComponent} from './pagination/pagination.component';
 import {ItemsTableComponent} from './items-table/items-table.component';
 import {VisibleIconDirective} from '../utils/visible-icon.directive';
 import {DtColumnComponent} from './dt-column/dt-column.component';
@@ -25,8 +25,8 @@ import {LabelsService} from './labels/labels.service';
     template: require('./data-table.component.html'),
     directives: [
         PageSizeComponent,
-        ResultsInfoDirective,
-        PaginationDirective,
+        ResultsInfoComponent,
+        PaginationComponent,
         VisibleIconDirective,
         ItemsTableComponent,
         DtColumnComponent
@@ -60,7 +60,6 @@ export class DataTableComponent implements OnInit {
 
     _labels: any;
 
-
     public columns: DtColumnModel[] = [];
 
     private cols: QueryList<DtColumnComponent>;
@@ -70,6 +69,7 @@ export class DataTableComponent implements OnInit {
         private dtColumnConverter: DtColumnConverter,
         @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>
     ) {
+        this._labels = this.labelsService.getLabels();
         this.cols = cols;
         this.cols.changes.subscribe(() => {
             this.columns = this.dtColumnConverter.convertArray(cols.toArray());
