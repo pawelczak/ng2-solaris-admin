@@ -8,5 +8,8 @@ export var labels = {
     'pagination': {
         'next': 'Next',
         'previous': 'Previous'
+    },
+    'table': {
+        'index': '#'
     }
 };

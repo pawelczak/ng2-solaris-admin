@@ -15,12 +15,24 @@ export class ItemsTableComponent {
     items: any[] = [];
 
     @Input()
+    columns: DtColumnModel[] = [];
+
+    @Input()
     pageSize: number = 1;
 
     @Input()
     pageNumber: number = 1;
 
     @Input()
-    columns: DtColumnModel[] = [];
+    labels: any = {
+        'index': '#'
+    };
 
+    @Input()
+    showIndex: boolean = false;
+
+
+    countIndex(index: number): number {
+        return ((this.pageNumber - 1) * this.pageSize) + index + 1;
+    }
 }

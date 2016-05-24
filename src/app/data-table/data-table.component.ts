@@ -46,7 +46,10 @@ export class DataTableComponent implements OnInit {
     set labels(labels: any) {
         this.labelsService.setLabels(labels);
         this._labels = this.labelsService.getLabels();
-    }
+    };
+
+    @Input()
+    showIndex: boolean = false;
 
     pageNumber: number = 1;
 
