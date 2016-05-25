@@ -39,7 +39,6 @@ describe ('DtColumnComponent', () => {
                     // assert
                     expect(componentFixture.componentInstance.value).toEqual(givenValue);
                     expect(componentFixture.componentInstance.label).toEqual(givenLabel);
-
             });
 
         })

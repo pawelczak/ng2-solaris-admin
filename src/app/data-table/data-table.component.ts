@@ -65,7 +65,9 @@ export class DataTableComponent implements OnInit {
 
     public columns: DtColumnModel[] = [];
 
-    private cols: QueryList<DtColumnComponent>;
+    public cols: QueryList<DtColumnComponent>;
+
+    public foo: any;
 
     constructor(
         private labelsService: LabelsService,
@@ -75,6 +77,7 @@ export class DataTableComponent implements OnInit {
         this._labels = this.labelsService.getLabels();
         this.cols = cols;
         this.cols.changes.subscribe(() => {
+            this.foo = cols.toArray();
             this.columns = this.dtColumnConverter.convertArray(cols.toArray());
         });
     }
@@ -88,8 +91,7 @@ export class DataTableComponent implements OnInit {
     }
 
     setPageSize(size: number): void {
-        this.pageSize = size;
-        this.pageNumber = 1;
+        this.pageSize = +size;
     }
 
     setPageNumber(page: number): void {

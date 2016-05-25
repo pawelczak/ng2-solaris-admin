@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, TemplateRef, ContentChild} from '@angular/core';
 
 @Component({
     selector: 'dt-column',
@@ -11,4 +11,5 @@ export class DtColumnComponent {
 
     @Input()
     public label: string;
+
 }

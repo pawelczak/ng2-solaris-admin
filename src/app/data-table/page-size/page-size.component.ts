@@ -12,7 +12,7 @@ import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
     `],
     template: `
         <label>
-            {{labels.prefix}}
+            {{labels?.prefix}}
             <select class="form-control input-sm"
                     [(ngModel)]="model.pageSize" 
                     (change)="change($event, ps.value)"
@@ -21,7 +21,7 @@ import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
                         [value]="p"
                         >{{p}}</option>
             </select>
-            {{labels.sufix}}
+            {{labels?.sufix}}
         </label>
 
     `
@@ -54,10 +54,11 @@ export class PageSizeComponent implements OnChanges {
         return this._defaultPageSizes;
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.model.pageSize = this.pageSize;
     }
 
+    // TODO add attribute types, value should be number
     change($event, value) {
         this.selectedPageSize.emit(value);
     }
