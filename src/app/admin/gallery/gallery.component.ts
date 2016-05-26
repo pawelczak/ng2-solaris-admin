@@ -28,7 +28,7 @@ export class GalleryComponent implements OnInit {
         }
     };
 
-    constructor(private _galleryService: GalleryService) {}
+    constructor(private galleryService: GalleryService) {}
 
 
     ngOnInit(): void {
@@ -36,7 +36,7 @@ export class GalleryComponent implements OnInit {
     }
 
     getGalleries(): void {
-        this.galleries = this._galleryService.getGalleries();
+        this.galleries = this.galleryService.getGalleries();
         /*
         this._galleryService
             .getGalleries()
