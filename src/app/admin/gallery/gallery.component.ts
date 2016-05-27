@@ -3,7 +3,7 @@ import {GalleryService} from './services/gallery.service';
 import {GalleryConverter} from './services/gallery.converter';
 import {Gallery} from './models/gallery';
 import {DATA_TABLE_DIRECTIVES} from '../../data-table/data_table_directives';
-import {TranslateService} from "ng2-translate/ng2-translate";
+import {TranslateService} from 'ng2-translate/ng2-translate';
 
 @Component({
     template: require('./gallery.component.html'),
@@ -74,6 +74,6 @@ export class GalleryComponent implements OnInit {
             default:
                 this.labels = this.labelsEN;
                 break;
-        };
+        }
     }
 }

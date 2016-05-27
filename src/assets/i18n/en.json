@@ -1,6 +1,22 @@
 {
   "appName": "Solaris Admin Panel EN",
   "dashboard": {},
-  "gallery": {},
-  "photo": {}
+  "gallery": {
+    "datatables": {
+      "resultsInfo": "Showing {{from}} to {{to}} of {{max}} galleries",
+      "pagination": {
+        "next": "Next page",
+        "previous": "Previous page"
+      }
+    }
+  },
+  "photo": {
+    "datatabls": {
+      "resultsInfo": "Showing {{from}} to {{to}} of {{max}} photos",
+      "pagination": {
+        "next": "Next photo",
+        "previous": "Previous test"
+      }
+    }
+  }
 }
