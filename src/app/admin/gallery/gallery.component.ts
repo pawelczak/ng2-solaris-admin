@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {GalleryService} from "./services/gallery.service";
-import {GalleryConverter} from "./services/gallery.converter";
-import {DataTableComponent} from "../../data-table/data-table.component";
-import {Gallery} from "./models/gallery";
-import {DtColumnComponent} from "../../data-table/dt-column/dt-column.component";
+import {GalleryService} from './services/gallery.service';
+import {GalleryConverter} from './services/gallery.converter';
+import {Gallery} from './models/gallery';
+import {DATA_TABLE_DIRECTIVES} from '../../data-table/data_table_directives';
+import {TranslateService} from "ng2-translate/ng2-translate";
 
 @Component({
     template: require('./gallery.component.html'),
@@ -12,15 +12,16 @@ import {DtColumnComponent} from "../../data-table/dt-column/dt-column.component"
         GalleryConverter
     ],
     directives: [
-        DataTableComponent,
-        DtColumnComponent
-    ],
+        DATA_TABLE_DIRECTIVES
+    ]
 })
 export class GalleryComponent implements OnInit {
 
     galleries: Gallery[] = [];
 
-    customLabels: any = {
+    labels: any;
+
+    private labelsEN: any = {
         'resultsInfo': 'Showing {{from}} to {{to}} of {{max}} entries test',
         'pagination': {
             'next': 'Next test',
@@ -28,7 +29,22 @@ export class GalleryComponent implements OnInit {
         }
     };
 
-    constructor(private galleryService: GalleryService) {}
+    private labelsPL: any = {
+        'resultsInfo': 'Po polsku {{from}} to {{to}} of {{max}} entries test',
+        'pagination': {
+            'next': 'Next test',
+            'previous': 'Previous test'
+        }
+    };
+
+    constructor(private galleryService: GalleryService,
+                private translateService: TranslateService
+    ) {
+        this.setLabels(this.translateService.currentLang);
+        this.translateService.onLangChange.subscribe((langEvent) => {
+            this.setLabels(langEvent.lang);
+        });
+    }
 
 
     ngOnInit(): void {
@@ -46,4 +62,18 @@ export class GalleryComponent implements OnInit {
             */
     }
 
+
+    private setLabels(lang: string): void {
+        switch (lang) {
+            case 'en':
+                this.labels = this.labelsEN;
+                break;
+            case 'pl':
+                this.labels = this.labelsPL;
+                break;
+            default:
+                this.labels = this.labelsEN;
+                break;
+        };
+    }
 }

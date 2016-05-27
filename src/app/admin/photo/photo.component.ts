@@ -1,14 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Photo} from "./models/photo";
-import {PhotoService} from "./services/photo.service";
-import {DataTableComponent} from "../../data-table/data-table.component";
-import {DtColumnComponent} from "../../data-table/dt-column/dt-column.component";
+import {Photo} from './models/photo';
+import {PhotoService} from './services/photo.service';
+import {DATA_TABLE_DIRECTIVES} from '../../data-table/data_table_directives';
 
 @Component({
     template: require('./photo.component.html'),
     directives: [
-        DataTableComponent,
-        DtColumnComponent
+        DATA_TABLE_DIRECTIVES
     ],
     providers: [
         PhotoService

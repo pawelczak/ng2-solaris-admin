@@ -9,23 +9,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand">Solaris Admin Panel</a>
+            <a href="index.html" class="navbar-brand">{{ 'appName' | translate}}</a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown" >
 
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
-                    EN  <i class="fa fa-caret-down"></i>
+                <a data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                    {{translateService.currentLang | uppercase}}  <i class="fa fa-caret-down"></i>
                 </a>
 
                 <!-- Drop down user -->
                 <ul class="dropdown-menu dropdown-user">
 
                     <li>
-                        <a href="">EN</a>
+                        <a (click)="changeLanguage('en')" >EN</a>
                     </li>
                     <li>
-                        <a href="">PL</a>
+                        <a (click)="changeLanguage('pl')" >PL</a>
                     </li>
                 </ul>
             </li>
