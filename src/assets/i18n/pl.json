@@ -4,7 +4,7 @@
   "gallery": {
     "datatables": {
       "tableHeader": "Galerie",
-      "resultsInfo": "od {{from}} do {{to}} z {{max}} galerii",
+      "resultsInfo": "Wyniki od {{from}} do {{to}} z {{max}} galerii",
       "pagination": {
         "next": "Następna strona",
         "previous": "Poprzednia strona"
@@ -14,7 +14,7 @@
   "photo": {
     "datatables": {
       "tableHeader": "Zdjęcia",
-      "resultsInfo": "Od {{from}} do {{to}} z {{max}} zdjęć",
+      "resultsInfo": "Wyniki od {{from}} do {{to}} z {{max}} zdjęć",
       "pagination": {
         "next": "Następna strona",
         "previous": "Poprzednia strona"

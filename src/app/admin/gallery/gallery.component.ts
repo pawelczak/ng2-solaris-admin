@@ -27,9 +27,7 @@ export class GalleryComponent implements OnInit {
     ) {
         this.loadLabels();
         this.translateService.onLangChange.subscribe(() => {
-            this.translateService.getTranslation(this.translateService.currentLang).subscribe((res) => {
-                this.loadLabels()
-            });
+            this.loadLabels()
         });
     }
 
