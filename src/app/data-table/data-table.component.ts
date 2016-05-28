@@ -10,6 +10,7 @@ import {DtColumnConverter} from './dt-column/dt-column.converter';
 import {DtColumnModel} from './dt-column/dt-column.model';
 import {DtConfigService} from './config/dt-config.service';
 import {LabelsService} from './labels/labels.service';
+import {DtControlsComponent} from "./dt-controls/dt.controls.component";
 
 @Component({
     selector: 'data-table',
@@ -29,7 +30,8 @@ import {LabelsService} from './labels/labels.service';
         PaginationComponent,
         VisibleIconDirective,
         ItemsTableComponent,
-        DtColumnComponent
+        DtColumnComponent,
+        DtControlsComponent
     ],
     providers: [
         DtConfigService,
@@ -65,20 +67,27 @@ export class DataTableComponent implements OnInit {
 
     public columns: DtColumnModel[] = [];
 
+    public columnsArray: DtControlsComponent[] = [];
+
     public cols: QueryList<DtColumnComponent>;
 
-    public foo: any;
+    public controls: QueryList<DtControlsComponent>;
 
     constructor(
         private labelsService: LabelsService,
         private dtColumnConverter: DtColumnConverter,
-        @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>
+        @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>,
+        @Query(DtControlsComponent) controls: QueryList<DtControlsComponent>
     ) {
         this._labels = this.labelsService.getLabels();
         this.cols = cols;
         this.cols.changes.subscribe(() => {
-            this.foo = cols.toArray();
             this.columns = this.dtColumnConverter.convertArray(cols.toArray());
+        });
+
+        this.controls = controls;
+        this.controls.changes.subscribe(() => {
+            this.columnsArray = controls.toArray();
         });
     }
 

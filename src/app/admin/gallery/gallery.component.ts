@@ -19,30 +19,17 @@ export class GalleryComponent implements OnInit {
 
     galleries: Gallery[] = [];
 
-    labels: any;
+    labels: any = {};
 
-    private labelsEN: any = {
-        'resultsInfo': 'Showing {{from}} to {{to}} of {{max}} entries test',
-        'pagination': {
-            'next': 'Next test',
-            'previous': 'Previous test'
-        }
-    };
-
-    private labelsPL: any = {
-        'resultsInfo': 'Po polsku {{from}} to {{to}} of {{max}} entries test',
-        'pagination': {
-            'next': 'Next test',
-            'previous': 'Previous test'
-        }
-    };
 
     constructor(private galleryService: GalleryService,
                 private translateService: TranslateService
     ) {
-        this.setLabels(this.translateService.currentLang);
-        this.translateService.onLangChange.subscribe((langEvent) => {
-            this.setLabels(langEvent.lang);
+        this.loadLabels();
+        this.translateService.onLangChange.subscribe(() => {
+            this.translateService.getTranslation(this.translateService.currentLang).subscribe((res) => {
+                this.loadLabels()
+            });
         });
     }
 
@@ -62,18 +49,19 @@ export class GalleryComponent implements OnInit {
             */
     }
 
+    public goAction() {
+        let gallery = new Gallery();
 
-    private setLabels(lang: string): void {
-        switch (lang) {
-            case 'en':
-                this.labels = this.labelsEN;
-                break;
-            case 'pl':
-                this.labels = this.labelsPL;
-                break;
-            default:
-                this.labels = this.labelsEN;
-                break;
-        }
+        gallery.id = Math.floor(Math.random() * 1000);
+        gallery.name = 'Name #' + gallery.id;
+
+        this.galleries.push(new Gallery());// .push(gallery);
+    }
+
+
+    private loadLabels(): void {
+        this.translateService.getTranslation(this.translateService.currentLang).subscribe((res) => {
+            this.labels = res.gallery;
+        });
     }
 }

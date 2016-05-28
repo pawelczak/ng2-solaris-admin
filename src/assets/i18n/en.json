@@ -3,6 +3,7 @@
   "dashboard": {},
   "gallery": {
     "datatables": {
+      "tableHeader": "Galleries table",
       "resultsInfo": "Showing {{from}} to {{to}} of {{max}} galleries",
       "pagination": {
         "next": "Next page",
@@ -11,11 +12,12 @@
     }
   },
   "photo": {
-    "datatabls": {
+    "datatables": {
+      "tableHeader": "Photos table",
       "resultsInfo": "Showing {{from}} to {{to}} of {{max}} photos",
       "pagination": {
-        "next": "Next photo",
-        "previous": "Previous test"
+        "next": "Next page",
+        "previous": "Previous page"
       }
     }
   }

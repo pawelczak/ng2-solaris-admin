@@ -6,6 +6,14 @@
 
         <div class="row">
 
+            <div *ngFor="let control of columnsArray" >
+                <span >CCCC</span>
+            </div>
+
+        </div>
+
+        <div class="row">
+
             <div class="col-sm-6 form-inline">
                 <page-size [pageSize]="pageSize" [labels]="labels.pageSize" (selectedPageSize)="setPageSize($event)" ></page-size>
             </div>
