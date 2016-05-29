@@ -41,6 +41,15 @@ import {DtControlsComponent} from "./dt-controls/dt.controls.component";
 })
 export class DataTableComponent implements OnInit {
 
+
+    private _pageSizeArray: number[] = [5, 10, 25, 50];
+
+    private _pageSize: number = this._pageSizeArray[1];
+
+    private _pageNumber: number = 1;
+
+    private _labels: any;
+
     @Input()
     items: any[];
 
@@ -53,17 +62,33 @@ export class DataTableComponent implements OnInit {
     @Input()
     showIndex: boolean = false;
 
-    pageNumber: number = 1;
+    @Input()
+    set pageSize(num: number) {
+        this._pageSize = +num;
+    }
 
-    pageSize: number = 1;
+    get pageSize(): number {
+        return this._pageSize;
+    }
 
-    searchPhrase: string = '';
+    @Input()
+    set pageSizeArray(sizes: number[]) {
+        this._pageSizeArray = sizes;
+    }
+    
+    get pageSizeArray(): number[] {
+        return this._pageSizeArray;
+    }
 
-    model: any = {
-        searchPhrase: ''
-    };
+    @Input()
+    set pageNumber(page: number) {
+        this._pageNumber = +page;
+    }
 
-    _labels: any;
+    get pageNumber(): number {
+        return this._pageNumber;
+    }
+
 
     public columns: DtColumnModel[] = [];
 
@@ -92,7 +117,7 @@ export class DataTableComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.setPageSize(10);
+        //this.setPageSize(10);
     }
 
     get labels() {
@@ -104,6 +129,6 @@ export class DataTableComponent implements OnInit {
     }
 
     setPageNumber(page: number): void {
-        this.pageNumber = page;
+        this.pageNumber = +page;
     }
 }

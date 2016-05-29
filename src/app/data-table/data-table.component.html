@@ -15,7 +15,8 @@
         <div class="row">
 
             <div class="col-sm-6 form-inline">
-                <page-size [pageSize]="pageSize" [labels]="labels.pageSize" (selectedPageSize)="setPageSize($event)" ></page-size>
+                <page-size [pageSize]="pageSize" [pageSizes]="pageSizeArray" [labels]="labels.pageSize"
+                           (selectedPageSize)="setPageSize($event)" ></page-size>
             </div>
 
             <div class="col-sm-6">

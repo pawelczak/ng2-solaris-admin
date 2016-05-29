@@ -29,7 +29,12 @@ import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 export class PageSizeComponent implements OnChanges {
 
     @Input()
-    pageSize: number = 10;
+    pageSize: number;
+
+    @Input()
+    set pageSizes(sizes: number[]) {
+        this._defaultPageSizes = sizes;
+    }
 
     @Input()
     labels: any = {
@@ -44,7 +49,7 @@ export class PageSizeComponent implements OnChanges {
         pageSize: 5
     };
 
-    private _defaultPageSizes: number[] = [5, 10, 15, 20];
+    private _defaultPageSizes: number[];
 
     constructor() {
         this.model.pageSize = this.pageSize;

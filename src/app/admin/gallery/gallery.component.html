@@ -7,7 +7,8 @@
 <div class="row">
     <div class="col-lg-12">
 
-        <data-table [items]="galleries" [showIndex]="true" [labels]="labels?.datatables" >
+        <data-table [items]="galleries" [showIndex]="true" [labels]="labels?.datatables"
+                    [pageSize]="10" [pageSizeArray]="[5,10,20]" [pageNumber]="'1'" >
             <dt-controls [action]="goAction"></dt-controls>
 
             <dt-column value="id" label="Id" >

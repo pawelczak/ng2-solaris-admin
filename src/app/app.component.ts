@@ -3,7 +3,6 @@ import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
 
 import {AdminComponent} from './admin/admin.component';
 import {TranslateService} from 'ng2-translate/ng2-translate';
-import {LanguageService} from './common/language/language.service';
 
 @Component({
     selector: 'app',
@@ -13,9 +12,6 @@ import {LanguageService} from './common/language/language.service';
     directives: [
         AdminComponent,
         ROUTER_DIRECTIVES
-    ],
-    providers: [
-        LanguageService
     ]
 })
 @RouteConfig([
