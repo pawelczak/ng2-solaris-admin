@@ -1,8 +1,10 @@
+import {TemplateRef} from '@angular/core';
+
 export class DtColumnModel {
 
     fieldName: string;
     label: string;
-    template: any;
+    template: TemplateRef<any>;
 
     constructor() {}
 }

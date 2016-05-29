@@ -13,7 +13,7 @@
             {{countIndex(index)}}
         </td>
         <td *ngFor="let column of columns"  >
-            <div *customTemplate="{template: column?.template, value: item[column.fieldName]}" >
+            <div *customTemplate="{template: column?.template, data: item, dataIndex: index}" >
                 {{item[column.fieldName]}}
             </div>
         </td>

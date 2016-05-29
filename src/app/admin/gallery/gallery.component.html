@@ -9,17 +9,21 @@
 
         <data-table [items]="galleries" [showIndex]="true" [labels]="labels?.datatables"
                     [pageSize]="10" [pageSizeArray]="[5,10,20]" [pageNumber]="'1'" >
+
             <dt-controls [action]="goAction"></dt-controls>
 
-            <dt-column value="id" label="Id" >
+            <dt-column label="Options" >
+                <template let-data="data" let-dataIndex="dataIndex" >
+                    <button (click)="editGallery(dataIndex)" class="btn btn-primary btn-circle" type="button">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </button>
+                    <button (click)="deleteGallery(dataIndex)" class="btn btn-primary btn-circle" type="button">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </template>
             </dt-column>
             <dt-column [value]="'name'" ></dt-column>
             <dt-column [value]="'visible'" [label]="'Visible'" >
-                <template let-value="value" >
-                    <div (click)="addGallery()" >
-                        {{value}}
-                    </div>
-                </template>
             </dt-column>
             <dt-column [value]="'description'" [label]="'Description'" ></dt-column>
         </data-table>

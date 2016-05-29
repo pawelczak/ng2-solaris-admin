@@ -56,10 +56,24 @@ export class GalleryComponent implements OnInit {
         this.galleries.push(gallery);
     }
 
+    public editGallery(index: number): void {
+        this.galleries[index].name += "EDITED";
+    }
+
+    public deleteGallery(index: number): void {
+        this.galleries.splice(index, 1);
+    }
+
 
     private loadLabels(): void {
         this.translateService.getTranslation(this.translateService.currentLang).subscribe((res) => {
             this.labels = res.gallery;
+        });
+    }
+
+    private find(id: number): any {
+        return this.galleries.filter((element) => {
+            return (element.id === id);
         });
     }
 }

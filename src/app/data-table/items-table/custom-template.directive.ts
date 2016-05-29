@@ -9,9 +9,13 @@ export class CustomTemplateDirective {
     ) { }
 
     @Input() set customTemplate(options: any) {
+
+        this.viewContainer.clear();
+        
         if (options.template !== undefined) {
             this.viewContainer.createEmbeddedView(options.template, {
-                'value': options.value
+                'data': options.data,
+                'dataIndex': options.dataIndex
             });
         } else {
             this.viewContainer.createEmbeddedView(this.templateRef);
