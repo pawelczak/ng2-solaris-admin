@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, Query, QueryList} from '@angular/core';
+import {Component, Input, Query, QueryList} from '@angular/core';
 
 import {PageSizeComponent} from './page-size/page-size.component';
 import {ResultsInfoComponent} from './results-info/results-info.component';
@@ -10,7 +10,7 @@ import {DtColumnConverter} from './dt-column/dt-column.converter';
 import {DtColumnModel} from './dt-column/dt-column.model';
 import {DtConfigService} from './config/dt-config.service';
 import {LabelsService} from './labels/labels.service';
-import {DtControlsComponent} from "./dt-controls/dt.controls.component";
+import {DtControlsComponent} from './dt-controls/dt.controls.component';
 
 @Component({
     selector: 'data-table',
@@ -39,7 +39,7 @@ import {DtControlsComponent} from "./dt-controls/dt.controls.component";
         DtColumnConverter
     ]
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent {
 
 
     private _pageSizeArray: number[] = [5, 10, 25, 50];
@@ -67,26 +67,14 @@ export class DataTableComponent implements OnInit {
         this._pageSize = +num;
     }
 
-    get pageSize(): number {
-        return this._pageSize;
-    }
-
     @Input()
     set pageSizeArray(sizes: number[]) {
         this._pageSizeArray = sizes;
-    }
-    
-    get pageSizeArray(): number[] {
-        return this._pageSizeArray;
     }
 
     @Input()
     set pageNumber(page: number) {
         this._pageNumber = +page;
-    }
-
-    get pageNumber(): number {
-        return this._pageNumber;
     }
 
 
@@ -104,7 +92,10 @@ export class DataTableComponent implements OnInit {
         @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>,
         @Query(DtControlsComponent) controls: QueryList<DtControlsComponent>
     ) {
+
+        // set labels
         this._labels = this.labelsService.getLabels();
+
         this.cols = cols;
         this.cols.changes.subscribe(() => {
             this.columns = this.dtColumnConverter.convertArray(cols.toArray());
@@ -116,13 +107,23 @@ export class DataTableComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
-        //this.setPageSize(10);
-    }
 
     get labels() {
         return this._labels;
     }
+
+    get pageNumber(): number {
+        return this._pageNumber;
+    }
+
+    get pageSizeArray(): number[] {
+        return this._pageSizeArray;
+    }
+
+    get pageSize(): number {
+        return this._pageSize;
+    }
+
 
     setPageSize(size: number): void {
         this.pageSize = +size;
