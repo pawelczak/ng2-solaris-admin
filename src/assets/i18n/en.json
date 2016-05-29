@@ -8,6 +8,9 @@
       "pagination": {
         "next": "Next page",
         "previous": "Previous page"
+      },
+      "table": {
+        "name": "Name"
       }
     }
   },

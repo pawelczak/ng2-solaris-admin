@@ -12,7 +12,7 @@
 
             <dt-controls [action]="goAction"></dt-controls>
 
-            <dt-column label="Options" >
+            <dt-column label="Actions" >
                 <template let-data="data" let-dataIndex="dataIndex" >
                     <button (click)="editGallery(dataIndex)" class="btn btn-primary btn-circle" type="button">
                         <i class="fa fa-pencil-square-o"></i>
@@ -22,7 +22,7 @@
                     </button>
                 </template>
             </dt-column>
-            <dt-column [value]="'name'" ></dt-column>
+            <dt-column [value]="'name'" [label]="labels?.datatables?.table?.name" ></dt-column>
             <dt-column [value]="'visible'" [label]="'Visible'" >
             </dt-column>
             <dt-column [value]="'description'" [label]="'Description'" ></dt-column>
