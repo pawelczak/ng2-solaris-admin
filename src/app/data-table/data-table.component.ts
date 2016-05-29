@@ -77,7 +77,7 @@ export class DataTableComponent {
         this._pageNumber = +page;
     }
 
-
+    
     public columns: DtColumnModel[] = [];
 
     public columnsArray: DtControlsComponent[] = [];
