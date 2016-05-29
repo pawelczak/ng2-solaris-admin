@@ -12,8 +12,10 @@
         <td *ngIf="showIndex" >
             {{countIndex(index)}}
         </td>
-        <td *ngFor="let column of columns">
-            {{item[column.fieldName]}}
+        <td *ngFor="let column of columns"  >
+            <div *customTemplate="{template: column?.template, value: item[column.fieldName]}" >
+                {{item[column.fieldName]}}
+            </div>
         </td>
     </tr>
 </table>

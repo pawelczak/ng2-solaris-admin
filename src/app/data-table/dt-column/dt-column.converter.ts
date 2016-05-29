@@ -12,6 +12,7 @@ export class DtColumnConverter {
 
         this.convertFieldName(rawColumn, dtColumnModel);
         this.convertLabel(rawColumn, dtColumnModel);
+        dtColumnModel.template = rawColumn.template;
 
         return dtColumnModel;
     }

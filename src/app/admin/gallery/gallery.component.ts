@@ -47,13 +47,13 @@ export class GalleryComponent implements OnInit {
             */
     }
 
-    public goAction() {
+    public addGallery() {
         let gallery = new Gallery();
 
         gallery.id = Math.floor(Math.random() * 1000);
         gallery.name = 'Name #' + gallery.id;
 
-        this.galleries.push(new Gallery());// .push(gallery);
+        this.galleries.push(gallery);
     }
 
 

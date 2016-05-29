@@ -12,4 +12,5 @@ export class DtColumnComponent {
     @Input()
     public label: string;
 
+    @ContentChild(TemplateRef) template: TemplateRef<any>;
 }
