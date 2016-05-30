@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GalleryService} from './services/gallery.service';
 import {GalleryConverter} from './services/gallery.converter';
 import {Gallery} from './models/gallery';
 import {DATA_TABLE_DIRECTIVES} from '../../data-table/data_table_directives';
 import {TranslateService} from 'ng2-translate/ng2-translate';
+import {EditGalleryComponent} from './components/edit-gallery/edit-gallery.component';
+import {ModalComponent, MODAL_DIRECTIVES} from "ng2-bs3-modal/ng2-bs3-modal";
 
 @Component({
     template: require('./gallery.component.html'),
@@ -12,10 +14,19 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
         GalleryConverter
     ],
     directives: [
-        DATA_TABLE_DIRECTIVES
+        DATA_TABLE_DIRECTIVES,
+        EditGalleryComponent,
+        MODAL_DIRECTIVES
     ]
 })
 export class GalleryComponent implements OnInit {
+
+
+    @ViewChild('editModal')
+    editModal: EditGalleryComponent;
+
+    @ViewChild('modal')
+    modal: ModalComponent;
 
     galleries: Gallery[] = [];
 
@@ -27,7 +38,7 @@ export class GalleryComponent implements OnInit {
     ) {
         this.loadLabels();
         this.translateService.onLangChange.subscribe(() => {
-            this.loadLabels()
+            this.loadLabels();
         });
     }
 
@@ -54,10 +65,21 @@ export class GalleryComponent implements OnInit {
         gallery.name = 'Name #' + gallery.id;
 
         this.galleries.push(gallery);
+
+        this.modal.open();
     }
 
-    public editGallery(index: number): void {
-        this.galleries[index].name += "EDITED";
+    public openEditModal(index: number): void {
+        this.editModal.open(this.galleries[index]);
+    }
+    
+    public onEditModalClose() {
+        console.log('edit close');
+        // this.galleries[index].name += 'EDITED';
+    }
+
+    public onEditOpen() {
+        console.log('edit open');
     }
 
     public deleteGallery(index: number): void {

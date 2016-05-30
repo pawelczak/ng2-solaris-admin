@@ -7,14 +7,22 @@
 <div class="row">
     <div class="col-lg-12">
 
+        <button (click)="addGallery()" type="button" >Button</button>
+
         <data-table [items]="galleries" [showIndex]="true" [labels]="labels?.datatables"
                     [pageSize]="10" [pageSizeArray]="[5,10,20]" [pageNumber]="'1'" >
 
-            <dt-controls [action]="goAction"></dt-controls>
+            <dt-controls [action]="addGallery">
+                <template>
+                    <button (click)="addGallery()" class="btn btn-primary btn-circle" type="button">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </template>
+            </dt-controls>
 
             <dt-column label="Actions" >
                 <template let-data="data" let-dataIndex="dataIndex" >
-                    <button (click)="editGallery(dataIndex)" class="btn btn-primary btn-circle" type="button">
+                    <button (click)="openEditModal(dataIndex)" class="btn btn-primary btn-circle" type="button">
                         <i class="fa fa-pencil-square-o"></i>
                     </button>
                     <button (click)="deleteGallery(dataIndex)" class="btn btn-primary btn-circle" type="button">
@@ -30,3 +38,18 @@
 
     </div>
 </div>
+
+<modal #modal >
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">I'm a modal!</h4>
+    </modal-header>
+    <modal-body>
+        MODAL
+    </modal-body>
+    <modal-footer [show-default-buttons]="true"></modal-footer>
+</modal>
+
+
+<edit-gallery #editModal (onOpen)="onEditOpen()" (onClose)="onEditModalClose()" >
+</edit-gallery>
+
