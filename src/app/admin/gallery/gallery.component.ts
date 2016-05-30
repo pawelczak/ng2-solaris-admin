@@ -5,7 +5,6 @@ import {Gallery} from './models/gallery';
 import {DATA_TABLE_DIRECTIVES} from '../../data-table/data_table_directives';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 import {EditGalleryComponent} from './components/edit-gallery/edit-gallery.component';
-import {ModalComponent, MODAL_DIRECTIVES} from "ng2-bs3-modal/ng2-bs3-modal";
 
 @Component({
     template: require('./gallery.component.html'),
@@ -15,8 +14,7 @@ import {ModalComponent, MODAL_DIRECTIVES} from "ng2-bs3-modal/ng2-bs3-modal";
     ],
     directives: [
         DATA_TABLE_DIRECTIVES,
-        EditGalleryComponent,
-        MODAL_DIRECTIVES
+        EditGalleryComponent
     ]
 })
 export class GalleryComponent implements OnInit {
@@ -24,9 +22,6 @@ export class GalleryComponent implements OnInit {
 
     @ViewChild('editModal')
     editModal: EditGalleryComponent;
-
-    @ViewChild('modal')
-    modal: ModalComponent;
 
     galleries: Gallery[] = [];
 
@@ -65,8 +60,6 @@ export class GalleryComponent implements OnInit {
         gallery.name = 'Name #' + gallery.id;
 
         this.galleries.push(gallery);
-
-        this.modal.open();
     }
 
     public openEditModal(index: number): void {
