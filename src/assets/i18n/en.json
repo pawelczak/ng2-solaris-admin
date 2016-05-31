@@ -1,7 +1,12 @@
 {
   "appName": "Solaris Admin Panel EN",
+  "common": {
+    "yes": "Yes",
+    "no": "No"
+  },
   "dashboard": {},
   "gallery": {
+    "header": "Galleries",
     "datatables": {
       "tableHeader": "Galleries table",
       "resultsInfo": "Showing {{from}} to {{to}} of {{max}} galleries",
@@ -12,6 +17,16 @@
       "table": {
         "name": "Name"
       }
+    },
+    "addModal": {
+
+    },
+    "editModal": {
+      "header": "Edit Gallery"
+    },
+    "deleteModal": {
+      "header": "Delete Gallery",
+      "message": "Do you want ot remove selected gallery?"
     }
   },
   "photo": {

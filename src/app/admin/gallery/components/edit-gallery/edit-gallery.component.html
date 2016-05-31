@@ -1,2 +1,11 @@
-EDIT GALLERY
-
+<modal #modal (onOpen)="onOpenEvent()" (onClose)="onCloseEvent()" >
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">I'm a edit modal!</h4>
+    </modal-header>
+    <modal-body>
+        <div *ngIf="gallery" >
+            {{gallery.name}}
+        </div>
+    </modal-body>
+    <modal-footer [show-default-buttons]="true"></modal-footer>
+</modal>

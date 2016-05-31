@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Galleries</h1>
+        <h1 class="page-header">{{"gallery.header" | translate}}</h1>
     </div>
 </div>
 
@@ -9,8 +9,33 @@
 
         <button (click)="addGallery()" type="button" >Button</button>
 
-        <data-table [items]="galleries" [showIndex]="true" [labels]="labels?.datatables"
+        <data-table #datatable [items]="galleries" [showIndex]="true" [labels]="labels?.datatables"
                     [pageSize]="10" [pageSizeArray]="[5,10,20]" [pageNumber]="'1'" >
+
+            <dt-column label="Actions" >
+                <template let-data="data" let-dataIndex="dataIndex" >
+                    <button (click)="openEditModal(dataIndex)" class="btn btn-primary" type="button">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </button>
+                    <button (click)="openDeleteModal(dataIndex)" class="btn btn-primary" type="button">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </template>
+            </dt-column>
+
+            <dt-column [value]="'name'" [label]="labels?.datatables?.table?.name" ></dt-column>
+            <dt-column [value]="'visible'" [label]="'Visible'" >
+            </dt-column>
+
+            <dt-column [value]="'description'" [label]="'Description'" >
+                <!--
+                <template let-data="data">
+                    {{data.description}} $
+                    {{dt.currentRow.class='red'}}
+                    <a (click) = 'select()';
+                </template>
+                -->
+            </dt-column>
 
             <dt-controls [action]="addGallery">
                 <template>
@@ -20,20 +45,6 @@
                 </template>
             </dt-controls>
 
-            <dt-column label="Actions" >
-                <template let-data="data" let-dataIndex="dataIndex" >
-                    <button (click)="openEditModal(dataIndex)" class="btn btn-primary btn-circle" type="button">
-                        <i class="fa fa-pencil-square-o"></i>
-                    </button>
-                    <button (click)="deleteGallery(dataIndex)" class="btn btn-primary btn-circle" type="button">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </template>
-            </dt-column>
-            <dt-column [value]="'name'" [label]="labels?.datatables?.table?.name" ></dt-column>
-            <dt-column [value]="'visible'" [label]="'Visible'" >
-            </dt-column>
-            <dt-column [value]="'description'" [label]="'Description'" ></dt-column>
         </data-table>
 
     </div>
@@ -41,6 +52,8 @@
 
 
 
-<edit-gallery #editModal (onOpen)="onEditOpen()" (onClose)="onEditModalClose()" >
+<edit-gallery #editModal (onOpen)="onEditModalOpen()" (onClose)="onEditModalClose()" >
 </edit-gallery>
 
+<delete-gallery #deleteModal (onOpen)="onDeleteModalOpen()" (onClose)="onDeleteModalClose($event, index)" >
+</delete-gallery>

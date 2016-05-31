@@ -1,6 +1,6 @@
 import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 
-@Directive({ selector: '[customTemplate]' })
+@Directive({selector: '[customTemplate]'})
 export class CustomTemplateDirective {
 
     constructor(

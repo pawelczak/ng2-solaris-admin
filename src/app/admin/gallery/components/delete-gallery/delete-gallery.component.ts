@@ -4,8 +4,8 @@ import {TranslatePipe} from 'ng2-translate/ng2-translate';
 import {Gallery} from '../../models/gallery';
 
 @Component({
-    selector: 'edit-gallery',
-    template: require('./edit-gallery.component.html'),
+    selector: 'delete-gallery',
+    template: require('./delete-gallery.component.html'),
     directives: [
         MODAL_DIRECTIVES
     ],
@@ -13,7 +13,7 @@ import {Gallery} from '../../models/gallery';
         TranslatePipe
     ]
 })
-export class EditGalleryComponent {
+export class DeleteGalleryComponent {
 
     @ViewChild('modal')
     modal: ModalComponent;
@@ -22,15 +22,18 @@ export class EditGalleryComponent {
     onOpen: EventEmitter<any> = new EventEmitter<any>();
 
     @Output()
-    onClose: EventEmitter<any> = new EventEmitter<any>();
+    onClose: EventEmitter<number> = new EventEmitter<number>();
 
     gallery: Gallery;
+
+    galleryIndex: number;
 
     constructor() {}
 
 
-    open(gallery: Gallery) {
+    open(gallery: Gallery, index: number) {
         this.gallery = gallery;
+        this.galleryIndex = index;
         this.modal.open();
     }
 
@@ -39,8 +42,8 @@ export class EditGalleryComponent {
     }
 
     onCloseEvent() {
-        console.log('foo');
-        this.onClose.emit(true);
+        console.log('confirm delete');
+        this.onClose.emit(this.galleryIndex);
     }
 
 }

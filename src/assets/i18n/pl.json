@@ -1,10 +1,15 @@
 {
   "appName": "Solaris Admin Panel PL",
+  "common": {
+    "yes": "Tak",
+    "no": "Nie"
+  },
   "dashboard": {},
   "gallery": {
+    "header": "Galerie",
     "datatables": {
       "tableHeader": "Galerie",
-      "resultsInfo": "Wyniki od {{from}} do {{to}} z {{max}} galerii",
+      "resultsInfo": "Pokazuje {{from}} do {{to}} z {{max}} galerii",
       "pagination": {
         "next": "Następna strona",
         "previous": "Poprzednia strona"
@@ -12,12 +17,22 @@
       "table": {
         "name": "Nazwa"
       }
+    },
+    "addModal": {
+
+    },
+    "editModal": {
+      "header": "Edytuj galerię"
+    },
+    "deleteModal": {
+      "header": "Usuń galerię",
+      "message": "Czy napewno chcesz usunąć wybraną galerię?"
     }
   },
   "photo": {
     "datatables": {
       "tableHeader": "Zdjęcia",
-      "resultsInfo": "Wyniki od {{from}} do {{to}} z {{max}} zdjęć",
+      "resultsInfo": "Pokazuje {{from}} do {{to}} z {{max}} zdjęć",
       "pagination": {
         "next": "Następna strona",
         "previous": "Poprzednia strona"

@@ -20,7 +20,6 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 export class AppComponent {
 
     constructor(translate: TranslateService) {
-
         let userLang = navigator.language.split('-')[0]; // use navigator lang if available
         userLang = /(pl|en)/gi.test(userLang) ? userLang : 'en';
 

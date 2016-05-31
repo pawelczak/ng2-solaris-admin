@@ -10,7 +10,7 @@ import {DtColumnConverter} from './dt-column/dt-column.converter';
 import {DtColumnModel} from './dt-column/dt-column.model';
 import {DtConfigService} from './config/dt-config.service';
 import {LabelsService} from './labels/labels.service';
-import {DtControlsComponent} from './dt-controls/dt.controls.component';
+import {DtControlsComponent} from './dt-control/dt.controls.component';
 
 @Component({
     selector: 'data-table',
@@ -77,7 +77,7 @@ export class DataTableComponent {
         this._pageNumber = +page;
     }
 
-    
+
     public columns: DtColumnModel[] = [];
 
     public columnsArray: DtControlsComponent[] = [];
