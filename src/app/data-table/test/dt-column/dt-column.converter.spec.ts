@@ -4,9 +4,10 @@ import {
     it
 } from '@angular/core/testing';
 
-import {DtColumnConverter} from './dt-column.converter';
-import {DtColumnComponent} from './dt-column.component';
-import {DtColumnModel} from './dt-column.model';
+import {DtColumnConverter} from '../../src/dt-column/dt-column.converter';
+import {DtColumnComponent} from '../../src/dt-column/dt-column.component';
+import {DtColumnModel} from '../../src/dt-column/dt-column.model';
+
 
 describe('DtColumnConverter', () => {
     

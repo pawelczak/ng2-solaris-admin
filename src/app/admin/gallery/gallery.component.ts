@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {GalleryService} from './services/gallery.service';
 import {GalleryConverter} from './services/gallery.converter';
 import {Gallery} from './models/gallery';
-import {DATA_TABLE_DIRECTIVES} from '../../data-table/data_table_directives';
+import {DATA_TABLE_DIRECTIVES} from '../../data-table/src/data_table_directives';
 import {TranslatePipe, TranslateService} from 'ng2-translate/ng2-translate';
 import {EditGalleryComponent} from './components/edit-gallery/edit-gallery.component';
 import {DeleteGalleryComponent} from './components/delete-gallery/delete-gallery.component';

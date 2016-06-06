@@ -9,7 +9,7 @@ import {DtColumnConverter} from './dt-column/dt-column.converter';
 import {DtColumnModel} from './dt-column/dt-column.model';
 import {DtConfigService} from './config/dt-config.service';
 import {LabelsService} from './labels/labels.service';
-import {DtControlsComponent} from './dt-control/dt.controls.component';
+import {DtControlsComponent} from './dt-controls/dt.controls.component';
 import {Options} from './options/options.model';
 
 @Component({

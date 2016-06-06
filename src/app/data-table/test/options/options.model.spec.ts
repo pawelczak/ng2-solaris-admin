@@ -1,4 +1,4 @@
-import {Options} from './options.model';
+import {Options} from '../../src/options/options.model';
 
 describe('Options', () => {
 

@@ -1,5 +1,6 @@
 import {describe, expect, it, xit, inject, beforeEachProviders, beforeEach} from '@angular/core/testing';
-import {DtColumnModel} from './dt-column.model';
+
+import {DtColumnModel} from '../../src/dt-column/dt-column.model';
 
 describe('DtColumnModel', () => {
     

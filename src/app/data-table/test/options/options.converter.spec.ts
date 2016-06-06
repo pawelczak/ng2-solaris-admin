@@ -1,5 +1,5 @@
-import {OptionsConverter} from './options.converter';
-import {Options} from './options.model';
+import {OptionsConverter} from '../../src/options/options.converter';
+import {Options} from '../../src/options/options.model';
 
 describe('OptionsConverter', () => {
 
