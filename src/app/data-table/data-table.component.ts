@@ -4,7 +4,6 @@ import {PageSizeComponent} from './page-size/page-size.component';
 import {ResultsInfoComponent} from './results-info/results-info.component';
 import {PaginationComponent} from './pagination/pagination.component';
 import {ItemsTableComponent} from './items-table/items-table.component';
-import {VisibleIconDirective} from '../utils/visible-icon.directive';
 import {DtColumnComponent} from './dt-column/dt-column.component';
 import {DtColumnConverter} from './dt-column/dt-column.converter';
 import {DtColumnModel} from './dt-column/dt-column.model';
@@ -29,7 +28,6 @@ import {Options} from './options/options.model';
         PageSizeComponent,
         ResultsInfoComponent,
         PaginationComponent,
-        VisibleIconDirective,
         ItemsTableComponent,
         DtColumnComponent,
         DtControlsComponent
@@ -43,34 +41,28 @@ import {Options} from './options/options.model';
 export class DataTableComponent {
 
 
-    private _pageSizeArray: number[] = [5, 10, 25, 50];
-
-    private _pageSize: number = this._pageSizeArray[1];
-
-    private _pageNumber: number = 1;
-
-    private _labels: any;
-
     @Input()
     items: any[];
 
     @Input()
     set labels(labels: any) {
         this.labelsService.setLabels(labels);
-        this._labels = this.labelsService.getLabels();
+        this.options.labels = this.labelsService.getLabels();
     };
 
     @Input()
-    showIndex: boolean = false;
+    set showIndex(val: boolean) {
+        this.options.showIndex = val;
+    }
 
     @Input()
     set pageSize(num: number) {
-        this._pageSize = +num;
+        this.options.pageSize = +num;
     }
 
     @Input()
     set pageSizeArray(sizes: number[]) {
-        this._pageSizeArray = sizes;
+        this.options.pageSizeArray = sizes;
     }
 
     @Input()
@@ -79,7 +71,6 @@ export class DataTableComponent {
     }
 
     public options: Options = new Options();
-
 
     public columns: DtColumnModel[] = [];
 
@@ -97,7 +88,7 @@ export class DataTableComponent {
     ) {
 
         // set labels
-        this._labels = this.labelsService.getLabels();
+        this.options.labels= this.labelsService.getLabels();
 
         this.cols = cols;
         this.cols.changes.subscribe(() => {
@@ -112,7 +103,7 @@ export class DataTableComponent {
 
 
     get labels() {
-        return this._labels;
+        return this.options.labels;
     }
 
     get pageNumber(): number {
@@ -120,11 +111,15 @@ export class DataTableComponent {
     }
 
     get pageSizeArray(): number[] {
-        return this._pageSizeArray;
+        return this.options.pageSizeArray;
     }
 
     get pageSize(): number {
-        return this._pageSize;
+        return this.options.pageSize;
+    }
+
+    get showIndex(): boolean {
+        return this.options.showIndex;
     }
 
 
