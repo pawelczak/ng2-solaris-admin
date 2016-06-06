@@ -27,7 +27,12 @@ describe('OptionsConverter', () => {
         it ('should convert simple object', () => {
 
             // given
-            let rawOptions = {pageNumber: 6};
+            let rawOptions = {pageNumber: 6,
+                pageSize: 11,
+                pageSizeArray: [5, 6, 11],
+                labels: {label: 'nice labels'},
+                showIndex: true
+            };
 
             // execute
             let expectedOptions = optionsConverter.convert(rawOptions);
@@ -35,40 +40,20 @@ describe('OptionsConverter', () => {
             // assert
             expect(expectedOptions instanceof Options).toEqual(true);
             expect(expectedOptions.pageNumber).toEqual(6);
+            expect(expectedOptions.pageSize).toEqual(11);
+            expect(expectedOptions.pageSizeArray).toEqual([5, 6, 11]);
+            expect(expectedOptions.labels).toEqual({label: 'nice labels'});
+            expect(expectedOptions.showIndex).toEqual(true);
         });
-
-        it ('should convert simple object with pageNumber undefined', () => {
-
-            // given
-            let rawOptions = {};
-
-            // execute
-            let expectedOptions = optionsConverter.convert(rawOptions);
-
-            // assert
-            expect(expectedOptions instanceof Options).toEqual(true);
-            expect(expectedOptions.pageNumber).not.toBeDefined();
-        });
-
-        /*
-        it ('should convert simple object with pageNumber null', () => {
-
-            // given
-            let rawOptions = {pageNumber: null);
-
-            // execute
-            let expectedOptions = optionsConverter.convert(rawOptions);
-
-            // assert
-            expect(expectedOptions instanceof Options).toEqual(true);
-            expect(expectedOptions.pageNumber).toEqual(null);
-        });
-        */
 
         it ('should convert simple object with pageNumber string value', () => {
 
             // given
-            let rawOptions = {pageNumber: '6'};
+            let rawOptions = {pageNumber: '6',
+                pageSize: '11',
+                pageSizeArray: ['5', '6', '11'],
+                showIndex: '0'
+            };
 
             // execute
             let expectedOptions = optionsConverter.convert(rawOptions);
@@ -76,6 +61,24 @@ describe('OptionsConverter', () => {
             // assert
             expect(expectedOptions instanceof Options).toEqual(true);
             expect(expectedOptions.pageNumber).toEqual(6);
+            expect(expectedOptions.pageSize).toEqual(11);
+            expect(expectedOptions.pageSizeArray).toEqual([5, 6, 11]);
+            expect(expectedOptions.showIndex).toEqual(false);
+        });
+
+        it ('should log message when pageSize is not in pageSizeArray', () => {
+
+            // given
+            let rawOptions = { pageSize: 2,
+                pageSizeArray: [1, 3]
+            };
+            spyOn(console, 'log');
+
+            // execute
+            optionsConverter.convert(rawOptions);
+
+            // assert
+            expect(console.log).toHaveBeenCalledWith('Error: pageSize should take a value from pageSizeArray.');
         });
 
     });
@@ -106,6 +109,7 @@ describe('OptionsConverter', () => {
 
             // assert
             expect(expectedOptions.length).toEqual(1);
+            expect(expectedOptions[0] instanceof Options).toEqual(true);
         });
 
     });

@@ -11,6 +11,7 @@ import {DtColumnModel} from './dt-column/dt-column.model';
 import {DtConfigService} from './config/dt-config.service';
 import {LabelsService} from './labels/labels.service';
 import {DtControlsComponent} from './dt-control/dt.controls.component';
+import {Options} from './options/options.model';
 
 @Component({
     selector: 'data-table',
@@ -74,8 +75,10 @@ export class DataTableComponent {
 
     @Input()
     set pageNumber(page: number) {
-        this._pageNumber = +page;
+        this.options.pageNumber = +page;
     }
+
+    public options: Options = new Options();
 
 
     public columns: DtColumnModel[] = [];
@@ -113,7 +116,7 @@ export class DataTableComponent {
     }
 
     get pageNumber(): number {
-        return this._pageNumber;
+        return this.options.pageNumber;
     }
 
     get pageSizeArray(): number[] {
