@@ -11,6 +11,7 @@ import {DtConfigService} from './config/dt-config.service';
 import {LabelsService} from './labels/labels.service';
 import {DtControlsComponent} from './dt-controls/dt.controls.component';
 import {Options} from './options/options.model';
+import {OptionsConverter} from './options/options.converter';
 
 @Component({
     selector: 'data-table',
@@ -35,14 +36,20 @@ import {Options} from './options/options.model';
     providers: [
         DtConfigService,
         LabelsService,
-        DtColumnConverter
+        DtColumnConverter,
+        OptionsConverter
     ]
 })
 export class DataTableComponent {
 
 
     @Input()
-    items: any[];
+    set options(options: any) {
+        this.options = this.optionsConverter.convert(options);
+    }
+
+    @Input()
+    items: any[] = [];
 
     @Input()
     set labels(labels: any) {
@@ -70,10 +77,11 @@ export class DataTableComponent {
         this.options.pageNumber = +page;
     }
 
-    public options: Options = new Options();
+    private _options: Options = new Options();
 
     public columns: DtColumnModel[] = [];
 
+    // TODO rename
     public columnsArray: DtControlsComponent[] = [];
 
     public cols: QueryList<DtColumnComponent>;
@@ -83,12 +91,13 @@ export class DataTableComponent {
     constructor(
         private labelsService: LabelsService,
         private dtColumnConverter: DtColumnConverter,
+        private optionsConverter: OptionsConverter,
         @Query(DtColumnComponent) cols: QueryList<DtColumnComponent>,
         @Query(DtControlsComponent) controls: QueryList<DtControlsComponent>
     ) {
 
         // set labels
-        this.options.labels= this.labelsService.getLabels();
+        this.options.labels = this.labelsService.getLabels();
 
         this.cols = cols;
         this.cols.changes.subscribe(() => {
@@ -101,6 +110,10 @@ export class DataTableComponent {
         });
     }
 
+    // TODO remove public options
+    get options() {
+        return this._options;
+    }
 
     get labels() {
         return this.options.labels;
@@ -121,7 +134,6 @@ export class DataTableComponent {
     get showIndex(): boolean {
         return this.options.showIndex;
     }
-
 
     setPageSize(size: number): void {
         this.pageSize = +size;

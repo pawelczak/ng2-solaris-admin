@@ -19,4 +19,8 @@ export class LabelsService {
     getLabels() {
         return this.labels;
     }
+
+    reset(newLabels: any) {
+        this.labels = newLabels;
+    }
 }
