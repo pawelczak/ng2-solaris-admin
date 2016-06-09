@@ -3,7 +3,7 @@ import {Input, Component} from '@angular/core';
 @Component({
     selector: 'results-info',
     template: `
-        <div class="results-info">
+        <div class='results-info'>
             {{createInfoText(pageNumber, pageSize, resultsNumber)}}
         </div>
     `,
@@ -25,9 +25,7 @@ export class ResultsInfoComponent {
     resultsNumber: number = 0;
 
     @Input()
-    labels: string;
-
-    private textTemplate: string = '';
+    labels: string = 'Showing {{from}} to {{to}} of {{max}} entries';
 
 
     createInfoText(pageNumber: number, pageSize: number, resultsNumber: number): string {
