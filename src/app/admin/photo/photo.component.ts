@@ -14,8 +14,7 @@ import {DATA_TABLE_DIRECTIVES} from '../../data-table/src/data_table_directives'
     ]
 })
 export class PhotoComponent implements OnInit {
-    
-    
+
     photos: Photo[];
 
     constructor(

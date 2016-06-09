@@ -55,7 +55,7 @@ export class DataTableComponent {
     set labels(labels: any) {
         this.labelsService.setLabels(labels);
         this.options.labels = this.labelsService.getLabels();
-    };
+    }
 
     @Input()
     set showIndex(val: boolean) {
@@ -141,5 +141,9 @@ export class DataTableComponent {
 
     setPageNumber(page: number): void {
         this.pageNumber = +page;
+    }
+
+    setLabelsService(labelsService: LabelsService) {
+        this.labelsService = labelsService;
     }
 }
