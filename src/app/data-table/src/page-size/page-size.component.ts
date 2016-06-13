@@ -55,8 +55,7 @@ export class PageSizeComponent {
 
     private _pageSize: number = 0;
 
-    constructor() {
-    }
+    constructor() {}
 
     get pageSize(): number {
         return this._pageSize;

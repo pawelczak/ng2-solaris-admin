@@ -55,10 +55,4 @@ describe('LabelsService', () => {
         expect(labelsService.getLabels().newTranslation).toBe('translation1');
         expect(labelsService.getLabels().trans).toBe('translation2');
     });
-
-
-
-
-
-
 });
