@@ -1,9 +1,8 @@
-import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'page-size',
     styles: [`
-
         label {
             font-weight: normal;
             text-align: left;
@@ -12,28 +11,31 @@ import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
     `],
     template: `
         <label>
-            {{labels?.prefix}}
+            <span class="page-size-prefix">{{labels?.prefix}}</span>
             <select class="form-control input-sm"
                     [(ngModel)]="model.pageSize" 
                     (change)="change($event, ps.value)"
                     #ps >
-                <option *ngFor="let p of pageSizes"
+                <option *ngFor="let p of pageSizeArray"
                         [value]="p"
                         >{{p}}</option>
             </select>
-            {{labels?.sufix}}
+            <span class="page-size-prefix">{{labels?.sufix}}</span>
         </label>
 
     `
 })
-export class PageSizeComponent implements OnChanges {
+export class PageSizeComponent {
 
     @Input()
-    pageSize: number;
+    set pageSize(pageSize: number) {
+        this._pageSize = pageSize;
+        this.model.pageSize = pageSize;
+    }
 
     @Input()
-    set pageSizes(sizes: number[]) {
-        this._defaultPageSizes = sizes;
+    set pageSizeArray(sizes: number[]) {
+        this._pageSizeArray = sizes;
     }
 
     @Input()
@@ -46,21 +48,22 @@ export class PageSizeComponent implements OnChanges {
     selectedPageSize = new EventEmitter<boolean>();
 
     model: any = {
-        pageSize: 5
+        pageSize: 0
     };
 
-    private _defaultPageSizes: number[];
+    private _pageSizeArray: number[] = [];
+
+    private _pageSize: number = 0;
 
     constructor() {
-        this.model.pageSize = this.pageSize;
     }
 
-    get pageSizes(): number[] {
-        return this._defaultPageSizes;
+    get pageSize(): number {
+        return this._pageSize;
     }
 
-    ngOnChanges(): void {
-        this.model.pageSize = this.pageSize;
+    get pageSizeArray(): number[] {
+        return this._pageSizeArray;
     }
 
     // TODO add attribute types, value should be number
